@@ -91,6 +91,23 @@
                 </StackPanel>
             </Grid>
         </StackPanel>
+
+        <!-- Tipo de persona -->
+        <StackPanel Orientation="Horizontal" Background="white" Width="641" MinHeight="150">
+            <StackPanel Orientation="Vertical">
+                <Label FontWeight="Bold" HorizontalAlignment="Center" Margin="10" FontSize="15" Content="Tipo de Persona:"/>
+                <materialDesign:Card Margin="15 10 5 10 " VerticalAlignment="Stretch" Width="312">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <RadioButton Margin="10" HorizontalAlignment="Center" Content="Natural" x:Name="IsNatural" Checked="RadioType_checked"/>
+                        <RadioButton Margin="10" HorizontalAlignment="Center" Content="Judicial" x:Name="IsJudicial" Checked="RadioType_checked"/>
+                    </StackPanel>
+                </materialDesign:Card>
+            </StackPanel>
+        </StackPanel>
+
+
+        <!-- Age form -->
+
         <StackPanel Orientation="Horizontal" Background="white" Width="641" MinHeight="250">
             <StackPanel Orientation="Vertical">
                 <Label FontWeight="Bold" HorizontalAlignment="Center" Margin="10" FontSize="15" Content="Edad:"/>
@@ -102,7 +119,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="-40 20 30 20">
                             <Label Content="Edad:" />
-                            <ComboBox/>
+                            <ComboBox IsEnabled="{Binding XamlPV.IsTypeSet}"/>
                         </StackPanel>
                     </StackPanel>
                 </materialDesign:Card>
@@ -126,8 +143,7 @@
             </Grid>
         </StackPanel>
 
-        <!-- Age form -->
-
+       
         <!-- Por Patrimonio  -->
         <StackPanel Orientation="Horizontal" Background="white" Width="641" MinHeight="250" >
             <StackPanel Orientation="Vertical">
@@ -142,9 +158,8 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Patrimonio:" ></Label>
-                            <Slider x:Name = "slider2" Minimum = "0" Maximum = "250000" TickFrequency = "140000" 
+                            <Slider IsEnabled="{Binding XamlPV.IsTypeSet}" x:Name = "slider2" Minimum = "0" Maximum = "250000" TickFrequency = "140000" 
                                   Interval="140000"  TickPlacement = "BottomRight" AutoToolTipPlacement="TopLeft" IsDirectionReversed="True" Margin = "10" Width="198"/>
-
                         </StackPanel>
                     </StackPanel>
                 </materialDesign:Card>
@@ -183,7 +198,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Ingresos:" ></Label>
-                            <Slider x:Name = "ingresos_slider" Minimum = "0" Maximum = "500000" TickFrequency = "140000" 
+                            <Slider IsEnabled="{Binding XamlPV.IsTypeSet}" x:Name = "ingresos_slider" Minimum = "0" Maximum = "500000" TickFrequency = "140000" 
                                   Interval="140000"  TickPlacement = "BottomRight" AutoToolTipPlacement="TopLeft" IsDirectionReversed="True" Margin = "10" Width="198"/>
                         </StackPanel>
                     </StackPanel>
@@ -223,7 +238,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Transacion:" ></Label>
-                            <Slider x:Name = "slider3" Minimum = "0" Maximum = "250000" TickFrequency = "140000" 
+                            <Slider IsEnabled="{Binding XamlPV.IsTypeSet}" x:Name = "slider3" Minimum = "0" Maximum = "250000" TickFrequency = "140000" 
                                   Interval="140000"  TickPlacement = "BottomRight" AutoToolTipPlacement="TopLeft" IsDirectionReversed="True" Margin = "10" Width="198"/>
 
                         </StackPanel>

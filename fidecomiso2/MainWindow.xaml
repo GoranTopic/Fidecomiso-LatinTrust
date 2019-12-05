@@ -32,12 +32,20 @@
     </Window.Resources>
 
     <Window.Triggers>
+        <EventTrigger RoutedEvent="StackPanel.MouseEnter" SourceName="GridMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuOpen}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="StackPanel.MouseLeave" SourceName="GridMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
+        </EventTrigger>
+        <!--
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu" >
             <BeginStoryboard Storyboard="{StaticResource MenuOpen}"/>
         </EventTrigger>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu" >
             <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
         </EventTrigger>
+        -->
     </Window.Triggers>
 
     <Grid Background="white" HorizontalAlignment="Left">
@@ -45,7 +53,7 @@
             <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}" Text="Riesgo Cliente" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" Foreground="White" />
             <materialDesign:PopupBox HorizontalAlignment="Right" Margin="10,5,10,5" StaysOpen="False"  PlacementMode="BottomAndAlignRightEdges" Foreground="White">
                 <StackPanel Width="170">
-                    <Button Foreground="#FF44355F" >
+                    <Button Click="New_Client" Foreground="#FF44355F" >
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Restart" Margin="0 0 10 0 "/>
                             <TextBlock>Nuevo Calculo</TextBlock>
@@ -79,7 +87,7 @@
             </materialDesign:PopupBox>
         </Grid>
         <Grid x:Name="GridMenu" Width="45" Background="#FF350A51" HorizontalAlignment="Left">
-            <StackPanel>
+            <StackPanel x:Name="MenuPanel" >
                 <Grid Background="White" Width="200" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" >
                     <Button x:Name="ButtonCloseMenu" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Left" Height="53" Width="54" Visibility="Collapsed" Click="ButtonCloseMenu_Click">
                         <materialDesign:PackIcon Foreground="#FF4F316E" Kind="Menu" />

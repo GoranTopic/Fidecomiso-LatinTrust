@@ -24,6 +24,18 @@ namespace fidecomiso2
             set { _Risk = value; }
         }
 
+
+        private bool _IsJudicial;
+        public bool IsJudicial
+        {
+            get { return _IsJudicial; }
+            set
+            {
+                _IsJudicial = value;
+                OnPropertyChanged("IsJudicial");
+            }
+        }
+
         private string _PrecentageLabel;
         public string PercentageLabel
         {

@@ -27,6 +27,8 @@ namespace fidecomiso2
 
     public partial class Cliente : Page
     {
+        PageVars PV;
+        public PageVars XamlPV { get { return PV; } }
 
         RiskField PepRisk;
         public RiskField XamlPepRisk { get { return PepRisk; } }
@@ -35,6 +37,7 @@ namespace fidecomiso2
         public RiskField XamlActividadRisk { get { return ActividadRisk; } }
         public Cliente()
         {
+            PV = new PageVars();
             PepRisk = new RiskField(0.3m);
             ActividadRisk = new RiskField(0.1m);
             this.DataContext = this;
@@ -56,6 +59,16 @@ namespace fidecomiso2
            
             if (count > 0 && count < 4) ActividadRisk.SetRisk(count);
         }
+        private void RadioType_checked(object sender, RoutedEventArgs e)
+        {
+            //we have to change this so that it is the greater client Class which get the value of IsJudicial
+            PV.IsTypeSet = true;
+            if ((bool)IsNatural.IsChecked) PepRisk.IsJudicial = false;
+            else if ((bool)IsJudicial.IsChecked) PepRisk.IsJudicial = true;
+            else PV.IsTypeSet = false;
+    
+        }
+
 
         public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
         {
@@ -70,9 +83,35 @@ namespace fidecomiso2
             }
         }
 
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
-   
+    public class PageVars : INotifyPropertyChanged
+    {
+
+        private bool _IsTypSet = false;
+        public bool IsTypeSet
+        {
+            get { return _IsTypSet; }
+            set
+            {
+                _IsTypSet = value;
+                OnPropertyChanged("IsTypeSet");
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            if (this.PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+
+
+    }
 
 
 }

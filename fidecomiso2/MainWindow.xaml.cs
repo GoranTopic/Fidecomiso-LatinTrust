@@ -20,15 +20,44 @@ namespace fidecomiso2
     /// </summary>
     public partial class MainWindow : Window
     {
+        Cliente Client_Page = new Cliente();
+        UbicacionGeografica UG_Page = new UbicacionGeografica();
+        ProductoServicio PS_Page = new ProductoServicio();
+        CanalVinculacion CV_Page = new CanalVinculacion();
+
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Content = new Cliente();
+            MainFrame.Content = Client_Page;
         }   
 
         private void Salir(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void New_Client(object sender, RoutedEventArgs e)
+        {
+            Client_Page = new Cliente();
+            UG_Page = new UbicacionGeografica();
+            PS_Page = new ProductoServicio();
+            CV_Page = new CanalVinculacion();
+            MainFrame.Content = Client_Page;
+        }
+
+        private void ToggelMenu_Click(object sender, RoutedEventArgs e)
+        {
+            if (ButtonOpenMenu.Visibility == Visibility.Visible)
+                ButtonOpenMenu.Visibility = Visibility.Collapsed;
+            else
+                ButtonOpenMenu.Visibility = Visibility.Visible;
+
+
+            if (ButtonCloseMenu.Visibility == Visibility.Visible)
+                ButtonCloseMenu.Visibility = Visibility.Collapsed;
+            else
+                ButtonCloseMenu.Visibility = Visibility.Visible;
+
         }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
@@ -46,10 +75,26 @@ namespace fidecomiso2
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ListViewItem item = (ListViewItem)sender;
-            if( item.Name == "cliente") MainFrame.Content = new Cliente();
-            else if( item.Name == "ubicacion") MainFrame.Content = new UbicacionGeografica();
-            else if( item.Name == "productoServicio") MainFrame.Content = new ProductoServicio();
-            else if( item.Name == "viculacion") MainFrame.Content = new CanalVinculacion();
+            if (item.Name == "cliente") MainFrame.Content = Client_Page;
+            else if (item.Name == "ubicacion") MainFrame.Content = UG_Page;
+            else if (item.Name == "productoServicio") MainFrame.Content = PS_Page;
+            else if (item.Name == "viculacion") MainFrame.Content = CV_Page;
+        }
+
+        private void StackPanel_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ButtonOpenMenu.Visibility == Visibility.Visible)
+                ButtonOpenMenu.Visibility = Visibility.Collapsed;
+            else
+                ButtonOpenMenu.Visibility = Visibility.Visible;
+
+
+            if (ButtonCloseMenu.Visibility == Visibility.Visible)
+                ButtonCloseMenu.Visibility = Visibility.Collapsed;
+            else
+                ButtonCloseMenu.Visibility = Visibility.Visible;
+
+
         }
     }
 }

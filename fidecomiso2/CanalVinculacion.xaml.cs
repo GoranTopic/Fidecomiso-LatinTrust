@@ -32,7 +32,6 @@ namespace fidecomiso2
 
         private void CheckBoxes_checked(object sender, RoutedEventArgs e)
         {
-
             int risk = 0;
             if ((bool)Matriz.IsChecked) { if (risk < 3) risk = 3; }
             else if ((bool)RefCliente.IsChecked) { if (risk < 2) risk = 2; }
@@ -43,7 +42,6 @@ namespace fidecomiso2
             else if ((bool)Online.IsChecked) { if (risk < 1) risk = 1; }
             else { risk = 1; }
             CanalVinc.SetRisk(risk);
-
         }
     }
 }

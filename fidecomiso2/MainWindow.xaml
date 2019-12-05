@@ -1,0 +1,150 @@
+﻿<Window x:Class="fidecomiso2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:fidecomiso2"
+        mc:Ignorable="d"
+        Title="LatinTrust Client Risk Calulator" Height="750" Width="700"
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+
+    <Window.Resources>
+        <Storyboard x:Key="MenuOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="45" />
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="200" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MenuClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="200" />
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="45" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu" >
+            <BeginStoryboard Storyboard="{StaticResource MenuOpen}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu" >
+            <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Grid Background="white" HorizontalAlignment="Left">
+        <Grid x:Name="Top_Bar" Height="50" VerticalAlignment="Top" Background="#FF44355F" Grid.ColumnSpan="4">
+            <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}" Text="Riesgo Cliente" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" Foreground="White" />
+            <materialDesign:PopupBox HorizontalAlignment="Right" Margin="10,5,10,5" StaysOpen="False"  PlacementMode="BottomAndAlignRightEdges" Foreground="White">
+                <StackPanel Width="170">
+                    <Button Foreground="#FF44355F" >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Restart" Margin="0 0 10 0 "/>
+                            <TextBlock>Nuevo Calculo</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Foreground="#FF44355F" >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="SettingsApplications" Margin="0 0 10 0 "/>
+                            <TextBlock>Ajustes</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Foreground="#FF44355F" >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="About" Margin="0 0 10 0 "/>
+                            <TextBlock>Informacion</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Foreground="#FF44355F" >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Help" Margin="0 0 10 0 "/>
+                            <TextBlock>ayuda</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Click="Salir" Foreground="#FF44355F" >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ExitRun" Margin="0 0 10 0 "/>
+                            <TextBlock>Salir</TextBlock>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </materialDesign:PopupBox>
+        </Grid>
+        <Grid x:Name="GridMenu" Width="45" Background="#FF350A51" HorizontalAlignment="Left">
+            <StackPanel>
+                <Grid Background="White" Width="200" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" >
+                    <Button x:Name="ButtonCloseMenu" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Left" Height="53" Width="54" Visibility="Collapsed" Click="ButtonCloseMenu_Click">
+                        <materialDesign:PackIcon Foreground="#FF4F316E" Kind="Menu" />
+                    </Button>
+                    <Button x:Name="ButtonOpenMenu" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Left" Height="53" Width="54" Click="ButtonOpenMenu_Click" RenderTransformOrigin="0.617,0.811">
+                        <materialDesign:PackIcon Foreground="#FF461E6E" Kind="Menu" RenderTransformOrigin="0.396,0.458" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                    </Button>
+                </Grid>
+
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="ChartAreasplineVariant" Foreground="white" Margin="15 10 5 0" VerticalAlignment="Center"/>
+                    <TextBlock Text="Analisis Cliente" Foreground="white" Margin="10 10 0 0" FontSize="14"/>
+                </StackPanel>
+                <Grid Margin="10 10 10 0 " Height="1" Width="200" Background="white"/>
+
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="193" >
+                    <ListViewItem x:Name="cliente" PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="AccountLocation" Foreground="White" Margin=" 7 10 0 0"/>
+                            <TextBlock Text="PEP" Foreground="white" Margin="10 10 0 0" FontSize="14"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem x:Name="ubicacion" Height="50" PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="MyLocation" Foreground="White" Margin="7 10 0 0"/>
+                            <TextBlock Text="Ubicacion Geografica" Foreground="white" Margin="10 10 0 0" FontSize="14"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem x:Name="productoServicio" Height="50" PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ServiceToolbox" Foreground="White" Margin="7 10 0 0"/>
+                            <TextBlock Text="Producto o servicio" Foreground="white" Margin="10 10 0 0" FontSize="14"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                    <ListViewItem x:Name="viculacion" Height="50" PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="OfficeBuilding" Foreground="White" Margin="7 10 0 0"/>
+                            <TextBlock Text="Canal de Vinculacion" Foreground="white" Margin="10 10 0 0" FontSize="14"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                </ListView>
+
+                <Grid Margin="10 10 10 0" Height="1" Width="200" Background="white"/>
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="ChartAreaspline" Foreground="white" Margin="15 20 5 0" HorizontalAlignment="Center"/>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                        <TextBlock Text="Risgo Transacional" Foreground="white" Margin="10 10 0 0" FontSize="14"/>
+                        <TextBlock Text="O Senales de Alerta" Foreground="white" Margin="10 10 0 0" FontSize="14"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <Grid Margin="10 10 10 0" Height="1" Width="200" Background="white"/>
+
+            </StackPanel>
+        </Grid>
+
+        <Grid Canvas.ZIndex="-1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="642" Height="664" Margin="50,55,0,0">
+            <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
+                <Frame NavigationUIVisibility="Hidden" x:Name="MainFrame" />
+            </ScrollViewer>
+        </Grid>
+
+    </Grid>
+</Window>

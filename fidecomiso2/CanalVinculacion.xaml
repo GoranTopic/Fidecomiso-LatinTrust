@@ -1,0 +1,53 @@
+﻿<Page x:Class="fidecomiso2.CanalVinculacion"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:fidecomiso2"
+      mc:Ignorable="d" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      Title="UbicacionGeografica">
+
+
+    <StackPanel Orientation="Vertical">
+        <!-- economic activities second form-->
+        <StackPanel Orientation="Horizontal" Background="white" MinHeight="250" Width="641">
+
+            <StackPanel Orientation="Vertical">
+                <Label FontWeight="Bold" HorizontalAlignment="Center" Margin="10" FontSize="15">
+                  Canales De Viculacion:
+                </Label>
+                <materialDesign:Card Margin="15 10 5 10" VerticalAlignment="Stretch" Width="312">
+                    <StackPanel x:Name="CanalVincCB" Margin="10,10,0,10">
+                        <CheckBox Checked="CheckBoxes_checked" Unchecked="CheckBoxes_checked"  Margin="3" x:Name="Online"             Content="Servicios Online" />
+                        <CheckBox Checked="CheckBoxes_checked" Unchecked="CheckBoxes_checked"  Margin="3" x:Name="Redes" Content="Redes Sociales (Internet)"/>
+                        <CheckBox Checked="CheckBoxes_checked" Unchecked="CheckBoxes_checked"  Margin="3" x:Name="Cajeros"  Content="Cajeros Auntomaticos" /> 
+                        <CheckBox Checked="CheckBoxes_checked" Unchecked="CheckBoxes_checked"  Margin="3" x:Name="Campanas" Content="Campanas Publicitarias" />
+                        <CheckBox Checked="CheckBoxes_checked" Unchecked="CheckBoxes_checked"  Margin="3" x:Name="RefGerencias" Content="Referidos de las gerencias" />
+                        <CheckBox Checked="CheckBoxes_checked" Unchecked="CheckBoxes_checked"  Margin="3" x:Name="RefCliente" Content="Referidos por otro cliente"/>
+                        <CheckBox Checked="CheckBoxes_checked" Unchecked="CheckBoxes_checked"  Margin="3" x:Name="Matriz" Content="Casa matriz o propia officina"/>
+
+                    </StackPanel> 
+                </materialDesign:Card>
+            </StackPanel>
+            <StackPanel Background="#FFB0AAB4" Orientation="Horizontal" Width="1" Margin="20">
+                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+            </StackPanel>
+            <Grid Width="268" >
+                <StackPanel Orientation="Vertical" Margin="0,20, 0 ,0">
+                    <Label Content="{Binding  XamlCanalVinc.PercentageLabel}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                    <Label Content="{Binding  XamlCanalVinc.RiskLabel}" Foreground="{Binding  XamlCanalVinc.LabelColor}" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                    <StackPanel Background="#FFB0AAB4" Orientation="Vertical" Height="1" Margin="10 10 10 10 ">
+                        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                    </StackPanel>
+                    <Label Content="{Binding  XamlCanalVinc.RiskVar}" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBlock Opacity="100" FontSize="12" HorizontalAlignment="Center" RenderTransformOrigin="0.519,0.156">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+                        </TextBlock.Foreground> Riesgo Variable</TextBlock>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+
+    </StackPanel>
+</Page>

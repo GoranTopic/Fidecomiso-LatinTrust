@@ -113,10 +113,6 @@
                 <Label FontWeight="Bold" HorizontalAlignment="Center" Margin="10" FontSize="15" Content="Edad:"/>
                 <materialDesign:Card Margin="15 10 5 10 " VerticalAlignment="Stretch" Width="312">
                     <StackPanel Margin="10,10,0,10">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <RadioButton Margin="10" HorizontalAlignment="Center" Content="Persona"/>
-                            <RadioButton Margin="10" HorizontalAlignment="Center" Content="Empresa"/>
-                        </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="-40 20 30 20">
                             <Label Content="Edad:" />
                             <ComboBox IsEnabled="{Binding XamlPV.IsTypeSet}"/>
@@ -153,13 +149,8 @@
                 <materialDesign:Card Margin="15 10 5 10 " VerticalAlignment="Stretch" Width="312">
                     <StackPanel Margin="10,10,0,10">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <RadioButton Margin="10" HorizontalAlignment="Center">Natural</RadioButton>
-                            <RadioButton Margin="10" HorizontalAlignment="Center">Judicial</RadioButton>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Patrimonio:" ></Label>
-                            <Slider IsEnabled="{Binding XamlPV.IsTypeSet}" x:Name = "slider2" Minimum = "0" Maximum = "250000" TickFrequency = "140000" 
-                                  Interval="140000"  TickPlacement = "BottomRight" AutoToolTipPlacement="TopLeft" IsDirectionReversed="True" Margin = "10" Width="198"/>
+                            <Label Content="Patrimonio:" HorizontalAlignment="Center" VerticalAlignment="Center" ></Label>
+                            <TextBox Text="{Binding  XamlIncomeRisk.Vault}" IsEnabled="{Binding XamlPV.IsTypeSet}" Margin = "10" Width="133" Height="23"/>
                         </StackPanel>
                     </StackPanel>
                 </materialDesign:Card>
@@ -193,13 +184,8 @@
                 <materialDesign:Card Margin="15 10 5 10 " VerticalAlignment="Stretch" Width="312">
                     <StackPanel Margin="10,10,0,10">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <RadioButton Margin="10" HorizontalAlignment="Center">Natural</RadioButton>
-                            <RadioButton Margin="10" HorizontalAlignment="Center">Judicial</RadioButton>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Ingresos:" ></Label>
-                            <Slider IsEnabled="{Binding XamlPV.IsTypeSet}" x:Name = "ingresos_slider" Minimum = "0" Maximum = "500000" TickFrequency = "140000" 
-                                  Interval="140000"  TickPlacement = "BottomRight" AutoToolTipPlacement="TopLeft" IsDirectionReversed="True" Margin = "10" Width="198"/>
+                            <Label Content="Ingresos:" VerticalAlignment="Center" ></Label>
+                            <TextBox Text="{Binding  XamlPV.Income}" IsEnabled="{Binding XamlPV.IsTypeSet}" Margin = "10" Width="133" Height="23"/>
                         </StackPanel>
                     </StackPanel>
                 </materialDesign:Card>
@@ -232,12 +218,8 @@
                 </Label>
                 <materialDesign:Card Margin="15 10 5 10 " VerticalAlignment="Stretch" Width="312">
                     <StackPanel Margin="10,10,0,10">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <RadioButton Margin="10" HorizontalAlignment="Center">Natural</RadioButton>
-                            <RadioButton Margin="10" HorizontalAlignment="Center">Judicial</RadioButton>
-                        </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="Transacion:" ></Label>
+                            <Label Content="Transacion:" VerticalAlignment="Center" ></Label>
                             <Slider IsEnabled="{Binding XamlPV.IsTypeSet}" x:Name = "slider3" Minimum = "0" Maximum = "250000" TickFrequency = "140000" 
                                   Interval="140000"  TickPlacement = "BottomRight" AutoToolTipPlacement="TopLeft" IsDirectionReversed="True" Margin = "10" Width="198"/>
 

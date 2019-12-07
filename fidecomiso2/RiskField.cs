@@ -24,6 +24,16 @@ namespace fidecomiso2
             set { _Risk = value; }
         }
 
+        private object _Vault;
+        public object Vault
+        {
+            get { return _Vault; }
+            set
+            {
+                _Vault = value;
+                OnPropertyChanged("Vault");
+            }
+        }
 
         private bool _IsJudicial;
         public bool IsJudicial

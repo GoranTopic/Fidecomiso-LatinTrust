@@ -50,7 +50,7 @@
 
     <Grid Background="white" HorizontalAlignment="Left">
         <Grid x:Name="Top_Bar" Height="50" VerticalAlignment="Top" Background="#FF44355F" Grid.ColumnSpan="4">
-            <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}" Text="Riesgo Cliente" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" Foreground="White" />
+            <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}" Text="Analysis de Riesgo" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" Foreground="White" />
             <materialDesign:PopupBox HorizontalAlignment="Right" Margin="10,5,10,5" StaysOpen="False"  PlacementMode="BottomAndAlignRightEdges" Foreground="White">
                 <StackPanel Width="170">
                     <Button Click="New_Client" Foreground="#FF44355F" >

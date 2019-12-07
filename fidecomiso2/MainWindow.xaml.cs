@@ -20,6 +20,8 @@ namespace fidecomiso2
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        RiskAnalysis Analysis = new RiskAnalysis(); 
         Cliente Client_Page = new Cliente();
         UbicacionGeografica UG_Page = new UbicacionGeografica();
         ProductoServicio PS_Page = new ProductoServicio();

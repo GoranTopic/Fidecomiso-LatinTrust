@@ -64,6 +64,7 @@
     <Compile Include="CanalVinculacion.xaml.cs">
       <DependentUpon>CanalVinculacion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RiskAnalysis.cs" />
     <Compile Include="RiskField.cs" />
     <Compile Include="Cliente.xaml.cs">
       <DependentUpon>Cliente.xaml</DependentUpon>

@@ -41,7 +41,10 @@ namespace fidecomiso2
 
             if (count > 0 && count < 4) ProdServ.SetRisk(count);
         }
-
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("CanalVinculacion.xaml", UriKind.Relative));
+        }
     }
 
 }

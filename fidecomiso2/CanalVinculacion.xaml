@@ -48,6 +48,8 @@
                 </StackPanel>
             </Grid>
         </StackPanel>
-
+        <Grid Background="White" Height="62">
+            <Button  Content="Siguiente" Margin="0,0,103,20" VerticalAlignment="Bottom" Width="100" HorizontalAlignment="Right" Click="NextButton_Click" />
+        </Grid>
     </StackPanel>
 </Page>

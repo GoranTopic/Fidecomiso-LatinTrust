@@ -20,7 +20,9 @@
                 <materialDesign:Card Margin="15 10 5 10" VerticalAlignment="Stretch" Width="312">
                     <StackPanel x:Name="ProdServCB" Margin="10,10,0,10">
                         <CheckBox Checked="CheckBoxes_checked" Unchecked="CheckBoxes_checked" Margin="3">Cruce con lista antes de la vinculacion</CheckBox>
-                        <CheckBox Checked="CheckBoxes_checked" Unchecked="CheckBoxes_checked" Margin="3">Permite entrada y salida de dinero (Aparte del input y el output</CheckBox>
+                        <CheckBox Checked="CheckBoxes_checked" Unchecked="CheckBoxes_checked" Margin="3">
+                            <TextBlock Width="270"> Entrada y salida de dinero
+                             (Aparte del input <LineBreak/> y el output) </TextBlock></CheckBox>
                         <CheckBox Checked="CheckBoxes_checked" Unchecked="CheckBoxes_checked" Margin="3">A sola solicitud del cliente o niveles de Autorizacion</CheckBox>
                         <CheckBox Checked="CheckBoxes_checked" Unchecked="CheckBoxes_checked" Margin="3">Cambios en las condiciones contratadas</CheckBox>
                     </StackPanel>
@@ -44,6 +46,8 @@
                 </StackPanel>
             </Grid>
         </StackPanel>
-
+        <Grid Background="White" Height="62">
+            <Button  Content="Siguiente" Margin="0,0,103,20" VerticalAlignment="Bottom" Width="100" HorizontalAlignment="Right" Click="NextButton_Click" />
+        </Grid>
     </StackPanel>
 </Page>

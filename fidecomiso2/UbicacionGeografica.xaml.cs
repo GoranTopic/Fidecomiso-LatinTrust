@@ -53,7 +53,10 @@ namespace fidecomiso2
 
         }
 
-        
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("ProductoServicio.xaml", UriKind.Relative));
+        }
 
     }
 

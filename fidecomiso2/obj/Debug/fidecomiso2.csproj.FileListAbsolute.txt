@@ -56,3 +56,5 @@ C:\Users\gusta\source\repos\Fidecomiso\fidecomiso2\obj\Debug\fidecomiso2.csproj.
 C:\Users\gusta\source\repos\Fidecomiso\fidecomiso2\obj\Debug\fidecomiso2.csproj.CopyComplete
 C:\Users\gusta\source\repos\Fidecomiso\fidecomiso2\obj\Debug\fidecomiso2.exe
 C:\Users\gusta\source\repos\Fidecomiso\fidecomiso2\obj\Debug\fidecomiso2.pdb
+C:\Users\gusta\Source\Repos\Fidecomiso\fidecomiso2\obj\Debug\RiesgoTransacional.g.cs
+C:\Users\gusta\Source\Repos\Fidecomiso\fidecomiso2\obj\Debug\RiesgoTransacional.baml

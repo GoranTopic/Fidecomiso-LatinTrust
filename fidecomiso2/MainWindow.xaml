@@ -49,7 +49,7 @@
     </Window.Triggers>
 
     <Grid Background="white" HorizontalAlignment="Left">
-        <Grid x:Name="Top_Bar" Height="50" VerticalAlignment="Top" Background="#FF44355F" Grid.ColumnSpan="4">
+        <Grid x:Name="Top_Bar" Height="50" VerticalAlignment="Top" Background="#FF47255D" Grid.ColumnSpan="4">
             <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}" Text="Analysis de Riesgo" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" Foreground="White" />
             <materialDesign:PopupBox HorizontalAlignment="Right" Margin="10,5,10,5" StaysOpen="False"  PlacementMode="BottomAndAlignRightEdges" Foreground="White">
                 <StackPanel Width="170">
@@ -93,41 +93,41 @@
                         <materialDesign:PackIcon Foreground="#FF4F316E" Kind="Menu" />
                     </Button>
                     <Button x:Name="ButtonOpenMenu" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Left" Height="53" Width="54" Click="ButtonOpenMenu_Click" RenderTransformOrigin="0.617,0.811">
-                        <materialDesign:PackIcon Foreground="#FF461E6E" Kind="Menu" RenderTransformOrigin="0.396,0.458" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                        <materialDesign:PackIcon Foreground="#FF461E6E" Kind="Menu" RenderTransformOrigin="0.396,0.458" VerticalAlignment="Top" HorizontalAlignment="Left" Height="32" Width="26" />
                     </Button>
                 </Grid>
 
                 <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="ChartAreasplineVariant" Foreground="white" Margin="15 10 5 0" VerticalAlignment="Center"/>
+                    <materialDesign:PackIcon Kind="ChartAreasplineVariant" Foreground="white" Margin="15 10 5 0" VerticalAlignment="Center" Height="25" Width="25"/>
                     <TextBlock Text="Analisis Cliente" Foreground="white" Margin="10 10 0 0" FontSize="14"/>
                 </StackPanel>
                 <Grid Margin="10 10 10 0 " Height="1" Width="200" Background="white"/>
 
-                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="193" >
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="205" >
                     <ListViewItem x:Name="cliente" PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="AccountLocation" Foreground="White" Margin=" 7 10 0 0"/>
+                            <materialDesign:PackIcon Kind="AccountLocation" Foreground="White" Margin=" 5 10 0 0" Height="25" Width="25"/>
                             <TextBlock Text="PEP" Foreground="white" Margin="10 10 0 0" FontSize="14"/>
                         </StackPanel>
                     </ListViewItem>
 
                     <ListViewItem x:Name="ubicacion" Height="50" PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="MyLocation" Foreground="White" Margin="7 10 0 0"/>
+                            <materialDesign:PackIcon Kind="MyLocation" Foreground="White" Margin="5 10 0 0" Height="25" Width="25"/>
                             <TextBlock Text="Ubicacion Geografica" Foreground="white" Margin="10 10 0 0" FontSize="14"/>
                         </StackPanel>
                     </ListViewItem>
 
                     <ListViewItem x:Name="productoServicio" Height="50" PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ServiceToolbox" Foreground="White" Margin="7 10 0 0"/>
+                            <materialDesign:PackIcon Kind="ServiceToolbox" Foreground="White" Margin="5 10 0 0" Height="25" Width="25"/>
                             <TextBlock Text="Producto o servicio" Foreground="white" Margin="10 10 0 0" FontSize="14"/>
                         </StackPanel>
                     </ListViewItem>
 
                     <ListViewItem x:Name="viculacion" Height="50" PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="OfficeBuilding" Foreground="White" Margin="7 10 0 0"/>
+                            <materialDesign:PackIcon Kind="OfficeBuilding" Foreground="White" Margin="5 10 0 0" Height="25" Width="25"/>
                             <TextBlock Text="Canal de Vinculacion" Foreground="white" Margin="10 10 0 0" FontSize="14"/>
                         </StackPanel>
                     </ListViewItem>
@@ -135,16 +135,33 @@
                 </ListView>
 
                 <Grid Margin="10 10 10 0" Height="1" Width="200" Background="white"/>
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="ChartAreaspline" Foreground="white" Margin="15 20 5 0" HorizontalAlignment="Center"/>
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                        <TextBlock Text="Risgo Transacional" Foreground="white" Margin="10 10 0 0" FontSize="14"/>
-                        <TextBlock Text="O Senales de Alerta" Foreground="white" Margin="10 10 0 0" FontSize="14"/>
-                    </StackPanel>
-                </StackPanel>
+
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="65" >
+                    <ListViewItem x:Name="transacional"  PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown" VerticalAlignment="Top">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <materialDesign:PackIcon Kind="BankTransfer" Foreground="white" Margin="5 15 5 0" HorizontalAlignment="Left" Height="28" Width="26" />
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                <TextBlock Text="Risgo Transacional" Foreground="white" Margin="10 10 0 0" FontSize="14"/>
+                                <TextBlock Text="O Senales de Alerta" Foreground="white" Margin="10 10 0 0" FontSize="14"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
 
                 <Grid Margin="10 10 10 0" Height="1" Width="200" Background="white"/>
+                
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="45" >
+                    <ListViewItem x:Name="Chart"  PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown" VerticalAlignment="Top">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <materialDesign:PackIcon Kind="ChartAreaspline" Foreground="white" Margin="5 5 5 0" HorizontalAlignment="Left" Height="25" Width="25" />
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                <TextBlock Text="Riesgo" Foreground="white" Margin="10 10 0 0" FontSize="14"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
 
+                <Grid Margin="10 10 10 0" Height="1" Width="200" Background="white"/>
             </StackPanel>
         </Grid>
 

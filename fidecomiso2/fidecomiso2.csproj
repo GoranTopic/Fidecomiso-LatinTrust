@@ -64,6 +64,9 @@
     <Compile Include="CanalVinculacion.xaml.cs">
       <DependentUpon>CanalVinculacion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RiesgoTransacional.xaml.cs">
+      <DependentUpon>RiesgoTransacional.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RiskAnalysis.cs" />
     <Compile Include="RiskField.cs" />
     <Compile Include="Cliente.xaml.cs">
@@ -96,6 +99,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ProductoServicio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RiesgoTransacional.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

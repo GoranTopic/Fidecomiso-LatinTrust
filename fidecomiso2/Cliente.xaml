@@ -91,31 +91,30 @@
                 </StackPanel>
             </Grid>
         </StackPanel>
-
         <!-- Tipo de persona -->
-        <StackPanel Orientation="Horizontal" Background="white" Width="641" MinHeight="150">
-            <StackPanel Orientation="Vertical">
-                <Label FontWeight="Bold" HorizontalAlignment="Center" Margin="10" FontSize="15" Content="Tipo de Persona:"/>
-                <materialDesign:Card Margin="15 10 5 10 " VerticalAlignment="Stretch" Width="312">
+        <Grid Background="white" Width="641" MinHeight="150">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Label FontWeight="Bold" Margin="10" FontSize="15" Content="Tipo de Persona:" HorizontalAlignment="Center"/>
+                <materialDesign:Card Margin="15 10 5 10 " VerticalAlignment="Center" Width="312" HorizontalAlignment="Center">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <RadioButton Margin="10" HorizontalAlignment="Center" Content="Natural" x:Name="IsNatural" Checked="RadioType_checked"/>
                         <RadioButton Margin="10" HorizontalAlignment="Center" Content="Judicial" x:Name="IsJudicial" Checked="RadioType_checked"/>
                     </StackPanel>
                 </materialDesign:Card>
             </StackPanel>
-        </StackPanel>
+        </Grid>
 
 
         <!-- Age form -->
 
-        <StackPanel Orientation="Horizontal" Background="white" Width="641" MinHeight="250">
+        <StackPanel Orientation="Horizontal" Background="white" Width="641" MinHeight="250" Height="157">
             <StackPanel Orientation="Vertical">
                 <Label FontWeight="Bold" HorizontalAlignment="Center" Margin="10" FontSize="15" Content="Edad:"/>
-                <materialDesign:Card Margin="15 10 5 10 " VerticalAlignment="Stretch" Width="312">
-                    <StackPanel Margin="10,10,0,10">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="-40 20 30 20">
-                            <Label Content="Edad:" />
-                            <ComboBox IsEnabled="{Binding XamlPV.IsTypeSet}"/>
+                <materialDesign:Card Margin="15 10 5 10 " VerticalAlignment="Center" Width="312" HorizontalAlignment="Center" Height="80">
+                    <StackPanel Margin="10,10,0,10" HorizontalAlignment="Center" Width="302" VerticalAlignment="Center">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="68,20,0,20" VerticalAlignment="Center" Width="116">
+                            <Label Content="Edad:" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            <TextBox Text="{Binding XamlPV.Age, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding XamlPV.IsTypeSet}" Margin = "10" Width="38" Height="23" TextChanged="Age_TextChanged"/>
                         </StackPanel>
                     </StackPanel>
                 </materialDesign:Card>
@@ -125,12 +124,12 @@
             </StackPanel>
             <Grid Width="268" >
                 <StackPanel Orientation="Vertical" Margin="0,20, 0 ,0">
-                    <Label Content="10%" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                    <Label Content="Bajo" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                    <Label Content="{Binding Path=XamlAgeRisk.PercentageLabel}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                    <Label Content="{Binding Path=XamlAgeRisk.RiskLabel}" Foreground="{Binding Path=XamlAgeRisk.LabelColor}"   FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                     <StackPanel Background="#FFB0AAB4" Orientation="Vertical" Height="1" Margin="10 10 10 10 ">
                         <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                     </StackPanel>
-                    <Label Content="0.3" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label Content="{Binding Path=XamlAgeRisk.RiskVar}" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
                     <TextBlock Opacity="100" FontSize="12" HorizontalAlignment="Center" RenderTransformOrigin="0.519,0.156">
                         <TextBlock.Foreground>
                             <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
@@ -139,7 +138,7 @@
             </Grid>
         </StackPanel>
 
-       
+
         <!-- Por Patrimonio  -->
         <StackPanel Orientation="Horizontal" Background="white" Width="641" MinHeight="250" >
             <StackPanel Orientation="Vertical">
@@ -150,7 +149,7 @@
                     <StackPanel Margin="10,10,0,10">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                             <Label Content="Patrimonio:" HorizontalAlignment="Center" VerticalAlignment="Center" ></Label>
-                            <TextBox Text="{Binding  XamlIncomeRisk.Vault}" IsEnabled="{Binding XamlPV.IsTypeSet}" Margin = "10" Width="133" Height="23"/>
+                            <TextBox Text="{Binding  XamlPV.Patrimony, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding XamlPV.IsTypeSet}" Margin = "10" Width="100" Height="23" TextChanged="Patrimony_TextChanged"/>
                         </StackPanel>
                     </StackPanel>
                 </materialDesign:Card>
@@ -160,12 +159,12 @@
             </StackPanel>
             <Grid Width="268" >
                 <StackPanel Orientation="Vertical" Margin="0,20, 0 ,0">
-                    <Label Content="10%" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                    <Label Content="Bajo" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                    <Label  Content="{Binding Path=XamlPatrimonyRisk.PercentageLabel}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                    <Label  Content="{Binding Path=XamlPatrimonyRisk.RiskLabel}" Foreground="{Binding Path=XamlPatrimonyRisk.LabelColor}"   FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                     <StackPanel Background="#FFB0AAB4" Orientation="Vertical" Height="1" Margin="10 10 10 10 ">
                         <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                     </StackPanel>
-                    <Label Content="0.3" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label Content="{Binding Path=XamlPatrimonyRisk.RiskVar}" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
                     <TextBlock Opacity="100" FontSize="12" HorizontalAlignment="Center" RenderTransformOrigin="0.519,0.156">
                         <TextBlock.Foreground>
                             <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
@@ -185,7 +184,7 @@
                     <StackPanel Margin="10,10,0,10">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                             <Label Content="Ingresos:" VerticalAlignment="Center" ></Label>
-                            <TextBox Text="{Binding  XamlPV.Income}" IsEnabled="{Binding XamlPV.IsTypeSet}" Margin = "10" Width="133" Height="23"/>
+                            <TextBox Text="{Binding  XamlPV.Income, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding XamlPV.IsTypeSet}" Margin = "10" Width="100" Height="23" TextChanged="Income_TextChanged"/>
                         </StackPanel>
                     </StackPanel>
                 </materialDesign:Card>
@@ -195,12 +194,12 @@
             </StackPanel>
             <Grid Width="268" >
                 <StackPanel Orientation="Vertical" Margin="0,20, 0 ,0">
-                    <Label Content="10%" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                    <Label Content="Bajo" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                    <Label Content="{Binding Path=XamlIncomeRisk.Percentage}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                    <Label Content="{Binding Path=XamlIncomeRisk.RiskLabel}" Foreground="{Binding Path=XamlIncomeRisk.LabelColor}"  FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                     <StackPanel Background="#FFB0AAB4" Orientation="Vertical" Height="1" Margin="10 10 10 10 ">
                         <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                     </StackPanel>
-                    <Label Content="0.3" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label Content="{Binding Path=XamlIncomeRisk.RiskVar}" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
                     <TextBlock Opacity="100" FontSize="12" HorizontalAlignment="Center" RenderTransformOrigin="0.519,0.156">
                         <TextBlock.Foreground>
                             <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
@@ -218,11 +217,9 @@
                 </Label>
                 <materialDesign:Card Margin="15 10 5 10 " VerticalAlignment="Stretch" Width="312">
                     <StackPanel Margin="10,10,0,10">
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Transacion:" VerticalAlignment="Center" ></Label>
-                            <Slider IsEnabled="{Binding XamlPV.IsTypeSet}" x:Name = "slider3" Minimum = "0" Maximum = "250000" TickFrequency = "140000" 
-                                  Interval="140000"  TickPlacement = "BottomRight" AutoToolTipPlacement="TopLeft" IsDirectionReversed="True" Margin = "10" Width="198"/>
-
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Content="Transacional:" VerticalAlignment="Center" ></Label>
+                            <TextBox Text="{Binding  XamlPV.Flow, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding XamlPV.IsTypeSet}" Margin = "10" Width="100" Height="23" TextChanged="Flow_TextChanged"/>
                         </StackPanel>
                     </StackPanel>
                 </materialDesign:Card>
@@ -232,12 +229,12 @@
             </StackPanel>
             <Grid Width="268" >
                 <StackPanel Orientation="Vertical" Margin="0,20, 0 ,0">
-                    <Label Content="10%" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                    <Label Content="Bajo" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                    <Label Content="{Binding Path=XamlFlowRisk.PercentageLabel}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                    <Label Content="{Binding Path=XamlFlowRisk.RiskLabel}" Foreground="{Binding Path=XamlFlowRisk.LabelColor}" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                     <StackPanel Background="#FFB0AAB4" Orientation="Vertical" Height="1" Margin="10 10 10 10 ">
                         <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                     </StackPanel>
-                    <Label Content="0.3" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label Content="{Binding Path=XamlFlowRisk.RiskVar}" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
                     <TextBlock Opacity="100" FontSize="12" HorizontalAlignment="Center" RenderTransformOrigin="0.519,0.156">
                         <TextBlock.Foreground>
                             <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
@@ -246,7 +243,7 @@
             </Grid>
         </StackPanel>
         <Grid Background="White" Height="62">
-            <Button  Content="Siguiente" Margin="0,0,103,20" VerticalAlignment="Bottom" Width="100" HorizontalAlignment="Right" />
+            <Button  Content="Siguiente" Margin="0,0,103,20" VerticalAlignment="Bottom" Width="100" HorizontalAlignment="Right" Click="NextButton_Click" />
         </Grid>
     </StackPanel>
 </Page>

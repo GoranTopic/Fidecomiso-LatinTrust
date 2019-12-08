@@ -35,16 +35,7 @@ namespace fidecomiso2
             }
         }
 
-        private bool _IsJudicial;
-        public bool IsJudicial
-        {
-            get { return _IsJudicial; }
-            set
-            {
-                _IsJudicial = value;
-                OnPropertyChanged("IsJudicial");
-            }
-        }
+       
 
         private string _PrecentageLabel;
         public string PercentageLabel
@@ -121,8 +112,13 @@ namespace fidecomiso2
 
         public void UpdateRiskFields()
         {
-
-            if (_Risk == 1)
+            if (_Risk == 0)
+            {
+                RiskLabel = "N/A";
+                LabelColor = LabelColor = Brushes.Gray;
+                RiskVar = _Risk * _Precentage;
+            }
+            else if (_Risk == 1)
             {
                 RiskLabel = "Bajo";
                 LabelColor = LabelColor = Brushes.ForestGreen;

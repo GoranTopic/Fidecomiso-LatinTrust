@@ -43,5 +43,9 @@ namespace fidecomiso2
             else { risk = 1; }
             CanalVinc.SetRisk(risk);
         }
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("RiesgoTransacional.xaml", UriKind.Relative));
+        }
     }
 }

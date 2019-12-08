@@ -27,31 +27,39 @@ namespace fidecomiso2
     {
         PageVars PV;
         public PageVars XamlPV { get { return PV; } }
-        
+
         RiskField PepRisk;
         public RiskField XamlPepRisk { get { return PepRisk; } }
 
-        RiskField IncomeRisk;
-        public RiskField XamlIncomeRisk { get { return PepRisk; } }
-        
-        RiskField AgeRisk;
-
-        public RiskField XamlAgeRisk { get { return PepRisk; } }
-        
         RiskField ActividadRisk;
         public RiskField XamlActividadRisk { get { return ActividadRisk; } }
+
+        RiskField AgeRisk;
+        public RiskField XamlAgeRisk { get { return AgeRisk; } }
+
+        RiskField PatrimonyRisk;
+        public RiskField XamlPatrimonyRisk { get { return PatrimonyRisk; } }
+
+        RiskField IncomeRisk;
+        public RiskField XamlIncomeRisk { get { return IncomeRisk; } }
+
+        RiskField FlowRisk;
+        public RiskField XamlFlowRisk { get { return FlowRisk; } }
+
         public Cliente()
         {
             PV = new PageVars();
             PepRisk = new RiskField(0.3m);
             ActividadRisk = new RiskField(0.1m);
             AgeRisk = new RiskField(0.15m);
+            PatrimonyRisk = new RiskField(0.1m);
             IncomeRisk = new RiskField(0.2m);
+            FlowRisk = new RiskField(0.15m);
 
             (App.Current as App).Analysis.ClienteRisks.Add("PEP", PepRisk);
             (App.Current as App).Analysis.ClienteRisks.Add("Activity", ActividadRisk);
             this.DataContext = this;
-            InitializeComponent();       
+            InitializeComponent();
         }
 
         private void radio_checked(object sender, RoutedEventArgs e)
@@ -63,7 +71,7 @@ namespace fidecomiso2
         private void CheckBoxes_checked(object sender, RoutedEventArgs e)
         {
             int count = 0;
-            foreach (CheckBox cb in FindVisualChildren<CheckBox>(Actividades_economicas)) 
+            foreach (CheckBox cb in FindVisualChildren<CheckBox>(Actividades_economicas))
                 if ((bool)cb.IsChecked) count++;
             if (count > 0 && count < 4) ActividadRisk.SetRisk(count);
         }
@@ -73,48 +81,114 @@ namespace fidecomiso2
             PV.IsTypeSet = true;
             if ((bool)IsNatural.IsChecked)
             {
-                PepRisk.IsJudicial = false;
-                (App.Current as App).Analysis.IsJudicial = PepRisk.IsJudicial;
+                PV.IsJudicial = false;
+                (App.Current as App).Analysis.IsJudicial = PV.IsJudicial;
+                Render_Age();
+                Render_Patrimony();
+                Render_Income();
+                Render_Flow();
             }
             else if ((bool)IsJudicial.IsChecked)
             {
-                PepRisk.IsJudicial = true;
-                (App.Current as App).Analysis.IsJudicial = PepRisk.IsJudicial;
+                PV.IsJudicial = true;
+                (App.Current as App).Analysis.IsJudicial = PV.IsJudicial;
+                Render_Age();
+                Render_Patrimony();
+                Render_Income();
+                Render_Flow();
             }
             else PV.IsTypeSet = false;
         }
-        private void Age_checked(object sender, RoutedEventArgs e)
+        private void Render_Age()
         {
-            //we have to change this so that it is the greater client Class which get the value of IsJudicial
-            PV.IsTypeSet = true;
-            if ((bool)IsNatural.IsChecked)
+            if (PV.IsJudicial)
             {
-                PepRisk.IsJudicial = false;
-                (App.Current as App).Analysis.IsJudicial = PepRisk.IsJudicial;
+                if (PV.Age < 0) AgeRisk.SetRisk(0);
+                else if (PV.Age >= 0 || PV.Age <= 3) AgeRisk.SetRisk(1);
+                else if (PV.Age > 3 && PV.Age <= 5) AgeRisk.SetRisk(2);
+                else if (PV.Age < 5) AgeRisk.SetRisk(3);
             }
-            else if ((bool)IsJudicial.IsChecked)
+            else
             {
-                PepRisk.IsJudicial = true;
-                (App.Current as App).Analysis.IsJudicial = PepRisk.IsJudicial;
+                if (PV.Age < 18) AgeRisk.SetRisk(0);
+                else if (PV.Age <= 25 || PV.Age >= 65) AgeRisk.SetRisk(3);
+                else if (PV.Age >= 26 && PV.Age <= 40) AgeRisk.SetRisk(2);
+                else if (PV.Age > 40 || PV.Age < 65) AgeRisk.SetRisk(1);
             }
-            else PV.IsTypeSet = false;
+            AgeRisk.Vault = PV.Age;
         }
-        private void Income_checked(object sender, RoutedEventArgs e)
+        private void Age_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
-             //we have to change this so that it is the greater client Class which get the value of IsJudicial
-             PV.IsTypeSet = true;
-            if ((bool)IsNatural.IsChecked)
+            Render_Age();
+        }
+
+        private void Render_Patrimony()
+        {
+            if (PV.IsJudicial)
             {
-                PepRisk.IsJudicial = false;
-                (App.Current as App).Analysis.IsJudicial = PepRisk.IsJudicial;
+                if (PV.Patrimony == 0) PatrimonyRisk.SetRisk(0);
+                else if (PV.Patrimony <= 150000) PatrimonyRisk.SetRisk(1);
+                else if (PV.Patrimony > 250000 && PV.Patrimony <= 500000) PatrimonyRisk.SetRisk(2);
+                else if (PV.Patrimony > 500000 || PV.Patrimony > 1000000) PatrimonyRisk.SetRisk(3);
             }
-            else if ((bool)IsJudicial.IsChecked)
+            else
             {
-                PepRisk.IsJudicial = true;
-                (App.Current as App).Analysis.IsJudicial = PepRisk.IsJudicial;
+                if (PV.Patrimony == 0) PatrimonyRisk.SetRisk(0);
+                else if (PV.Patrimony <= 10000) PatrimonyRisk.SetRisk(1);
+                else if (PV.Patrimony > 50000 && PV.Patrimony <= 150000) PatrimonyRisk.SetRisk(2);
+                else if (PV.Patrimony > 150000 || PV.Patrimony > 250000) PatrimonyRisk.SetRisk(3);
             }
-            else PV.IsTypeSet = false;
+            PatrimonyRisk.Vault = PV.Patrimony;
+        }
+
+        private void Patrimony_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Render_Patrimony();
+        }
+
+        private void Render_Income()
+        {
+            if (PV.IsJudicial)
+            {
+                if (PV.Income == 0) IncomeRisk.SetRisk(0);
+                else if (PV.Income <= 100000) IncomeRisk.SetRisk(1);
+                else if (PV.Income > 100000 && PV.Income <= 250000) IncomeRisk.SetRisk(2);
+                else if (PV.Income > 500000 || PV.Income > 250000) IncomeRisk.SetRisk(3);
+            }
+            else
+            {
+                if (PV.Income == 0) IncomeRisk.SetRisk(0);
+                else if (PV.Income <= 5000) IncomeRisk.SetRisk(1);
+                else if (PV.Income > 5000 && PV.Income <= 15000) IncomeRisk.SetRisk(2);
+                else if (PV.Income > 30000 || PV.Income > 15000) IncomeRisk.SetRisk(3);
+            }
+            IncomeRisk.Vault = PV.Income;
+        }
+        private void Income_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Render_Income();
+        }
+        private void Render_Flow()
+        {
+            if (PV.IsJudicial)
+            {
+                if (PV.Flow == 0) FlowRisk.SetRisk(0);
+                else if (PV.Flow <= 50000) FlowRisk.SetRisk(1);
+                else if (PV.Flow > 50000 && PV.Flow <= 250000) FlowRisk.SetRisk(2);
+                else if (PV.Flow > 250000) FlowRisk.SetRisk(3);
+            }
+            else
+            {
+                if (PV.Flow == 0) FlowRisk.SetRisk(0);
+                else if (PV.Flow <= 5000) FlowRisk.SetRisk(1);
+                else if (PV.Flow > 5000 && PV.Flow <= 10000) FlowRisk.SetRisk(2);
+                else if (PV.Flow > 10000) FlowRisk.SetRisk(3);
+            }
+            FlowRisk.Vault = PV.Flow;
+        }
+        private void Flow_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Render_Flow(); 
         }
         public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
         {
@@ -127,6 +201,11 @@ namespace fidecomiso2
                     foreach (T childOfChild in FindVisualChildren<T>(child)) yield return childOfChild;
                 }
             }
+        }
+
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("UbicacionGeografica.xaml", UriKind.Relative));
         }
     }
 
@@ -143,14 +222,56 @@ namespace fidecomiso2
             }
         }
 
-        private bool _Income = false;
-        public bool Income
+        private bool _IsJudicial;
+        public bool IsJudicial
+        {
+            get { return _IsJudicial; }
+            set
+            {
+                _IsJudicial = value;
+                OnPropertyChanged("IsJudicial");
+            }
+        }
+        private int _Age;
+        public int Age
+        {
+            get { return _Age; }
+            set
+            {
+                _Age = value;
+                OnPropertyChanged("Age");
+            }
+        }
+        private int _Patrimony;
+        public int Patrimony
+        {
+            get { return _Patrimony; }
+            set
+            {
+                _Patrimony = value;
+                OnPropertyChanged("Patrimony");
+            }
+        }
+
+        private int _Income;
+        public int Income
         {
             get { return _Income; }
             set
             {
                 _Income = value;
                 OnPropertyChanged("Income");
+            }
+        }
+
+        private int _Flow;
+        public int Flow
+        {
+            get { return _Flow; }
+            set
+            {
+                _Flow = value;
+                OnPropertyChanged("Flow");
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;

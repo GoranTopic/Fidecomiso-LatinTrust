@@ -58,3 +58,14 @@ C:\Users\gusta\source\repos\Fidecomiso\fidecomiso2\obj\Debug\fidecomiso2.exe
 C:\Users\gusta\source\repos\Fidecomiso\fidecomiso2\obj\Debug\fidecomiso2.pdb
 C:\Users\gusta\Source\Repos\Fidecomiso\fidecomiso2\obj\Debug\RiesgoTransacional.g.cs
 C:\Users\gusta\Source\Repos\Fidecomiso\fidecomiso2\obj\Debug\RiesgoTransacional.baml
+C:\Users\gusta\Source\Repos\Fidecomiso\fidecomiso2\obj\Debug\RiskChart.g.cs
+C:\Users\gusta\Source\Repos\Fidecomiso\fidecomiso2\obj\Debug\RiskChart.baml
+C:\Users\gusta\Source\Repos\Fidecomiso\fidecomiso2\bin\Debug\LiveCharts.dll
+C:\Users\gusta\Source\Repos\Fidecomiso\fidecomiso2\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\gusta\Source\Repos\Fidecomiso\fidecomiso2\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\gusta\Source\Repos\Fidecomiso\fidecomiso2\bin\Debug\LiveCharts.pdb
+C:\Users\gusta\Source\Repos\Fidecomiso\fidecomiso2\bin\Debug\LiveCharts.xml
+C:\Users\gusta\Source\Repos\Fidecomiso\fidecomiso2\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\gusta\Source\Repos\Fidecomiso\fidecomiso2\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\gusta\Source\Repos\Fidecomiso\fidecomiso2\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\gusta\Source\Repos\Fidecomiso\fidecomiso2\bin\Debug\LiveCharts.Wpf.xml

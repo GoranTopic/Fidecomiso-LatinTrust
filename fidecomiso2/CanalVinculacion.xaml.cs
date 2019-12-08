@@ -26,21 +26,24 @@ namespace fidecomiso2
         public CanalVinculacion()
         {
             CanalVinc = new RiskField(1);
+            
+            (App.Current as App).Analysis.VinculationChanels.Add("VinculationChannels", CanalVinc);
+            
             this.DataContext = this;
             InitializeComponent();
         }
 
         private void CheckBoxes_checked(object sender, RoutedEventArgs e)
         {
-            int risk = 0;
-            if ((bool)Matriz.IsChecked) { if (risk < 3) risk = 3; }
-            else if ((bool)RefCliente.IsChecked) { if (risk < 2) risk = 2; }
-            else if ((bool)RefGerencias.IsChecked) { if (risk < 2) risk = 2; }
-            else if ((bool)Campanas.IsChecked) { if (risk < 2) risk = 2; }
-            else if ((bool)Cajeros.IsChecked) { if (risk < 1) risk = 1; }
-            else if ((bool)Redes.IsChecked) { if (risk < 1) risk = 1; }
-            else if ((bool)Online.IsChecked) { if (risk < 1) risk = 1; }
-            else { risk = 1; }
+            int risk = 3;
+            if ((bool)Matriz.IsChecked) { if (risk > 1) risk = 1; }
+            else if ((bool)RefCliente.IsChecked) { if (risk > 2) risk = 2; }
+            else if ((bool)RefGerencias.IsChecked) { if (risk > 2) risk = 2; }
+            else if ((bool)Campanas.IsChecked) { if (risk > 2) risk = 2; }
+            else if ((bool)Cajeros.IsChecked) { if (risk == 0) risk = 3; }
+            else if ((bool)Redes.IsChecked) { if (risk == 0) risk = 3; }
+            else if ((bool)Online.IsChecked) { if (risk == 0) risk = 3; }
+            else { risk = 0; }
             CanalVinc.SetRisk(risk);
         }
         private void NextButton_Click(object sender, RoutedEventArgs e)

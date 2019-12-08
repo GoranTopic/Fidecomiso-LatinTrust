@@ -58,6 +58,11 @@ namespace fidecomiso2
 
             (App.Current as App).Analysis.ClienteRisks.Add("PEP", PepRisk);
             (App.Current as App).Analysis.ClienteRisks.Add("Activity", ActividadRisk);
+            (App.Current as App).Analysis.ClienteRisks.Add("Age", AgeRisk);
+            (App.Current as App).Analysis.ClienteRisks.Add("Patrimony", PatrimonyRisk);
+            (App.Current as App).Analysis.ClienteRisks.Add("Income", IncomeRisk);
+            (App.Current as App).Analysis.ClienteRisks.Add("Flow", FlowRisk);
+        
             this.DataContext = this;
             InitializeComponent();
         }

@@ -27,6 +27,9 @@ namespace fidecomiso2
         public ProductoServicio()
         {
             ProdServ = new RiskField(1);
+            
+            (App.Current as App).Analysis.ProductService.Add("ProductService", ProdServ);
+
             this.DataContext = this;
             InitializeComponent();
         }

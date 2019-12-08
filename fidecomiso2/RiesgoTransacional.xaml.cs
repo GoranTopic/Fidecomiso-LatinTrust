@@ -54,17 +54,86 @@ namespace fidecomiso2
             CambiosRisk = new RiskField(0.15m);
             HistInusualRisk = new RiskField(0.1m);
             StatulJudicialRisk = new RiskField(0.15m);
+
+            (App.Current as App).Analysis.TransactionalRisk.Add("VersusAverage", VSPromedioRisk);
+            (App.Current as App).Analysis.TransactionalRisk.Add("VersusIncome", VSIngresosRisk);
+            (App.Current as App).Analysis.TransactionalRisk.Add("TransactionPlace", LugarTransRisk);
+            (App.Current as App).Analysis.TransactionalRisk.Add("Changes", CambiosRisk);
+            (App.Current as App).Analysis.TransactionalRisk.Add("UnusualHIstory", HistInusualRisk);
+            (App.Current as App).Analysis.TransactionalRisk.Add("JudicialStatus", StatulJudicialRisk);
+
             this.DataContext = this;
             InitializeComponent();
         }
 
+
+
+
         private void radio_checked(object sender, RoutedEventArgs e)
         {
-            if ((bool)radio1.IsChecked) VSIngresosRisk.SetRisk(3);
-            else if ((bool)radio2.IsChecked) VSIngresosRisk.SetRisk(2);
-            else if ((bool)radio3.IsChecked) VSIngresosRisk.SetRisk(1);
+            int count;
+            
+            count = 3;
+            foreach (RadioButton cb in RiskField.FindVisualChildren<RadioButton>(vspromedio))
+            {
+                if ((bool)cb.IsChecked) VSPromedioRisk.SetRisk(count);
+                count--;
+                
+            }
+            
+            count = 3;
+            foreach (RadioButton cb in RiskField.FindVisualChildren<RadioButton>(vsingresos))
+            {
+                if ((bool)cb.IsChecked) VSIngresosRisk.SetRisk(count);
+                count--;
+            }
+
+            count = 2;
+            foreach (RadioButton cb in RiskField.FindVisualChildren<RadioButton>(lugar_transacion))
+            {
+                if ((bool)cb.IsChecked)
+                {
+                    if (count == 2) LugarTransRisk.SetRisk(3);
+                    else LugarTransRisk.SetRisk(count);
+                }
+                count--;
+            }
+
+            count = 2;
+            foreach (RadioButton cb in RiskField.FindVisualChildren<RadioButton>(frecuencia))
+            {
+                if ((bool)cb.IsChecked)
+                {
+                    if (count == 2) FrecueciaRisk.SetRisk(3);
+                    else FrecueciaRisk.SetRisk(count);
+                }
+                count--;
+            }
+
+            count = 3;
+            foreach (RadioButton cb in RiskField.FindVisualChildren<RadioButton>(condiciones))
+            {
+                if ((bool)cb.IsChecked) CambiosRisk.SetRisk(count);
+                count--;
+            }
+
+            count = 3;
+            foreach (RadioButton cb in RiskField.FindVisualChildren<RadioButton>(inusuales))
+            {
+                if ((bool)cb.IsChecked) HistInusualRisk.SetRisk(count);
+                count--;
+            }
+
+            count = 3;
+            foreach (RadioButton cb in RiskField.FindVisualChildren<RadioButton>(judicial))
+            {
+                if ((bool)cb.IsChecked) StatulJudicialRisk.SetRisk(count);
+                count--;
+            }
+
+
         }
-       
+
         public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
         {
             if (depObj != null)

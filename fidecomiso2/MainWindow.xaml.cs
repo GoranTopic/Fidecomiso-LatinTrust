@@ -26,6 +26,7 @@ namespace fidecomiso2
         ProductoServicio PS_Page = new ProductoServicio();
         CanalVinculacion CV_Page = new CanalVinculacion();
         RiesgoTransacional RTrans_Page = new RiesgoTransacional();
+        RiskChart Chart_Page = new RiskChart();
 
         public MainWindow()
         {
@@ -46,6 +47,7 @@ namespace fidecomiso2
             PS_Page = new ProductoServicio();
             CV_Page = new CanalVinculacion();
             RTrans_Page = new RiesgoTransacional();
+            Chart_Page = new RiskChart();
             MainFrame.Content = Client_Page;
         }
 
@@ -84,6 +86,7 @@ namespace fidecomiso2
             else if (item.Name == "productoServicio") MainFrame.Content = PS_Page;
             else if (item.Name == "viculacion") MainFrame.Content = CV_Page;
             else if (item.Name == "transacional") MainFrame.Content = RTrans_Page;
+            else if (item.Name == "Chart") MainFrame.Content = Chart_Page;
         }
 
         private void StackPanel_MouseEnter(object sender, MouseEventArgs e)

@@ -38,14 +38,6 @@
         <EventTrigger RoutedEvent="StackPanel.MouseLeave" SourceName="GridMenu">
             <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
         </EventTrigger>
-        <!--
-        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu" >
-            <BeginStoryboard Storyboard="{StaticResource MenuOpen}"/>
-        </EventTrigger>
-        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu" >
-            <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
-        </EventTrigger>
-        -->
     </Window.Triggers>
 
     <Grid Background="white" HorizontalAlignment="Left">
@@ -98,37 +90,37 @@
                 </Grid>
 
                 <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="ChartAreasplineVariant" Foreground="white" Margin="15 10 5 0" VerticalAlignment="Center" Height="25" Width="25"/>
-                    <TextBlock Text="Analisis Cliente" Foreground="white" Margin="10 10 0 0" FontSize="14"/>
+                    <materialDesign:PackIcon Kind="FileDocumentBoxSearch" Foreground="white" Margin="10" VerticalAlignment="Center" Height="25" Width="25"/>
+                    <TextBlock Text="Analisis Cliente" Foreground="white" Margin="10 20 0 0" FontSize="14"/>
                 </StackPanel>
                 <Grid Margin="10 10 10 0 " Height="1" Width="200" Background="white"/>
 
                 <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="205" >
                     <ListViewItem x:Name="cliente" PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="AccountLocation" Foreground="White" Margin=" 5 10 0 0" Height="25" Width="25"/>
-                            <TextBlock Text="PEP" Foreground="white" Margin="10 10 0 0" FontSize="14"/>
+                            <materialDesign:PackIcon Kind="AccountLocation" Foreground="White" Margin="5 10 0 0" Height="25" Width="25"/>
+                            <TextBlock Text="PEP" Foreground="white" Margin="10 15 0 0" FontSize="14"/>
                         </StackPanel>
                     </ListViewItem>
 
                     <ListViewItem x:Name="ubicacion" Height="50" PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="MyLocation" Foreground="White" Margin="5 10 0 0" Height="25" Width="25"/>
-                            <TextBlock Text="Ubicacion Geografica" Foreground="white" Margin="10 10 0 0" FontSize="14"/>
+                            <TextBlock Text="Ubicacion Geografica" Foreground="white" Margin="10 15 0 0" FontSize="14"/>
                         </StackPanel>
                     </ListViewItem>
 
                     <ListViewItem x:Name="productoServicio" Height="50" PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="ServiceToolbox" Foreground="White" Margin="5 10 0 0" Height="25" Width="25"/>
-                            <TextBlock Text="Producto o servicio" Foreground="white" Margin="10 10 0 0" FontSize="14"/>
+                            <TextBlock Text="Producto o servicio" Foreground="white" Margin="10 15 0 0" FontSize="14"/>
                         </StackPanel>
                     </ListViewItem>
 
                     <ListViewItem x:Name="viculacion" Height="50" PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="OfficeBuilding" Foreground="White" Margin="5 10 0 0" Height="25" Width="25"/>
-                            <TextBlock Text="Canal de Vinculacion" Foreground="white" Margin="10 10 0 0" FontSize="14"/>
+                            <TextBlock Text="Canal de Vinculacion" Foreground="white" Margin="10 15 0 0" FontSize="14"/>
                         </StackPanel>
                     </ListViewItem>
 

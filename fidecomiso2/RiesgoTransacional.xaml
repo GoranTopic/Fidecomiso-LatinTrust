@@ -10,22 +10,24 @@
 
     <Grid>
         <StackPanel Orientation="Vertical">
-            <!-- first PEP form -->
+            
+            <!-- TRANSACCIONAL MENSUAL VS PROMEDIO form -->
             <StackPanel Orientation="Horizontal" Background="white" Width="641">
                 <StackPanel Orientation="Vertical">
-                    <Label FontWeight="Bold" HorizontalAlignment="Center" Margin="10" FontSize="15">
-                        PEP:
-                    </Label>
+                    <TextBlock Foreground="#FF3F3F3F" FontWeight="Bold" HorizontalAlignment="Center" Margin="10" FontSize="15">
+                        MONTO TRANSACCIONAL
+                        <LineBreak/> MENSUAL VS PROMEDIO:
+                    </TextBlock>
                     <materialDesign:Card Margin="15 10 5 10 " VerticalAlignment="Stretch" Width="312">
-                        <StackPanel Margin="10,10,-6,10">
-                            <RadioButton x:Name="radio1" Margin="10"  Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Checked="radio_checked">
-                                <TextBlock Width="272" Height="51">Transacciona mas del 20%, hasta menos del 50%<LineBreak/> del promedio del los ultimo seis meses.</TextBlock>
+                        <StackPanel x:Name="vspromedio" Margin="10,10,-6,10">
+                            <RadioButton x:Name="radio1" Margin="10"  Style="{StaticResource MaterialDesignRadioButton}" Checked="radio_checked">
+                                <TextBlock Width="272" Height="51">Transacciona mas del 50% del promedio<LineBreak/> del los ultimo seis meses.</TextBlock>
                             </RadioButton>
-                            <RadioButton x:Name="radio2" Margin="10" Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Checked="radio_checked" >
-                                <TextBlock Width="272" Height="44">Transacciona hasta un 20% mas del promedio <LineBreak/> de los ultimos sies meses.</TextBlock>
+                            <RadioButton x:Name="radio2" Margin="10" Style="{StaticResource MaterialDesignRadioButton}" Checked="radio_checked" >
+                                <TextBlock Width="272" Height="44">Transacciona mas del 20%, hasta menos del 50%<LineBreak/> del promedio del los ultimo seis meses.</TextBlock>
                             </RadioButton>
-                            <RadioButton x:Name="radio3" Margin="10" Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Checked="radio_checked">
-                                <TextBlock Width="272" Height="50"> Los que fuerosn funcinarios hace mas de <LineBreak/> 3 anos</TextBlock>
+                            <RadioButton x:Name="radio3" Margin="10" Style="{StaticResource MaterialDesignRadioButton}" Checked="radio_checked">
+                                <TextBlock Width="272" Height="50"> Transacciona hasta un 20% mas del promedio <LineBreak/> de los ultimos seis meses</TextBlock>
                             </RadioButton>
                         </StackPanel>
                     </materialDesign:Card>
@@ -35,12 +37,12 @@
                 </StackPanel>
                 <Grid Width="268" >
                     <StackPanel Orientation="Vertical" Margin="0,20, 0 ,0">
-                        <Label Content="{Binding Path=XamlPepRisk.PercentageLabel}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                        <Label Content="{Binding Path=XamlPepRisk.RiskLabel}" Foreground="{Binding Path=XamlPepRisk.LabelColor}"  FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                        <Label Content="{Binding Path=XamlVSPromedioRisk.PercentageLabel}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                        <Label Content="{Binding Path=XamlVSPromedioRisk.RiskLabel}" Foreground="{Binding Path=XamlVSPromedioRisk.LabelColor}"  FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" />
                         <StackPanel Background="#FFB0AAB4" Orientation="Vertical" Height="1" Margin="10 10 10 10 ">
                             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                         </StackPanel>
-                        <Label  Content="{Binding Path=XamlPepRisk.RiskVar}" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
+                        <Label  Content="{Binding Path=XamlVSPromedioRisk.RiskVar}" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
                         <TextBlock Opacity="100" FontSize="12" HorizontalAlignment="Center" RenderTransformOrigin="0.519,0.156">
                             <TextBlock.Foreground>
                                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
@@ -48,22 +50,26 @@
                     </StackPanel>
                 </Grid>
             </StackPanel>
-            <!-- first PEP form -->
+            
+            
+            <!-- TRANSACCIONAL MENSUAL VS INGRESOS form -->
             <StackPanel Orientation="Horizontal" Background="white" Width="641">
                 <StackPanel Orientation="Vertical">
-                    <Label FontWeight="Bold" HorizontalAlignment="Center" Margin="10" FontSize="15">
-                        PEP:
-                    </Label>
+                    <TextBlock Foreground="#FF3F3F3F" FontWeight="Bold" HorizontalAlignment="Center" Margin="10" FontSize="15">
+                        MONTO TRANSACCIONAL
+                        <LineBreak/>
+                        MENSUAL VS INGRESOS:
+                    </TextBlock>
                     <materialDesign:Card Margin="15 10 5 10 " VerticalAlignment="Stretch" Width="312">
-                        <StackPanel Margin="10,10,-6,10">
+                        <StackPanel x:Name="vsingresos" Margin="10,10,-6,10">
                             <RadioButton Margin="10"  Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Checked="radio_checked">
-                                <TextBlock Width="272" Height="51">Se encuantra actualmente laboriando en la <LineBreak/>funcion publica o un familiar directo labora en <LineBreak/> la misma</TextBlock>
+                                <TextBlock Width="272" Height="51">TRANSACCIONA MAS DEL 50% DE SUS <LineBreak/> INGRESOS DECLARADOS</TextBlock>
                             </RadioButton>
                             <RadioButton Margin="10" Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Checked="radio_checked" >
-                                <TextBlock Width="272" Height="44">Vinculado 2 de afinidad y PEP'S que dejaron sus <LineBreak/>puestos hace 1 ano</TextBlock>
+                                <TextBlock Width="272" Height="44">TRANSACCIONA MAS DEL 20% HASTA <LineBreak/> MENOS DEL 50% DE SUS INGRESOS</TextBlock>
                             </RadioButton>
                             <RadioButton Margin="10" Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Checked="radio_checked">
-                                <TextBlock Width="272" Height="50"> Los que fuerosn funcinarios hace mas de <LineBreak/> 3 anos</TextBlock>
+                                <TextBlock Width="272" Height="50">TRANSACCIONA HASTA UN 20 % MAS <LineBreak/> DE SUS INGRESO DECLARADOS </TextBlock>
                             </RadioButton>
                         </StackPanel>
                     </materialDesign:Card>
@@ -73,12 +79,12 @@
                 </StackPanel>
                 <Grid Width="268" >
                     <StackPanel Orientation="Vertical" Margin="0,20, 0 ,0">
-                        <Label Content="{Binding Path=XamlPepRisk.PercentageLabel}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                        <Label Content="{Binding Path=XamlPepRisk.RiskLabel}" Foreground="{Binding Path=XamlPepRisk.LabelColor}"  FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                        <Label Content="{Binding Path=XamlVSIngresosRisk.PercentageLabel}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                        <Label Content="{Binding Path=XamlVSIngresosRisk.RiskLabel}" Foreground="{Binding Path=XamlVSIngresosRisk.LabelColor}"  FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" />
                         <StackPanel Background="#FFB0AAB4" Orientation="Vertical" Height="1" Margin="10 10 10 10 ">
                             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                         </StackPanel>
-                        <Label  Content="{Binding Path=XamlPepRisk.RiskVar}" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
+                        <Label  Content="{Binding Path=XamlVSIngresosRisk.RiskVar}" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
                         <TextBlock Opacity="100" FontSize="12" HorizontalAlignment="Center" RenderTransformOrigin="0.519,0.156">
                             <TextBlock.Foreground>
                                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
@@ -86,22 +92,21 @@
                     </StackPanel>
                 </Grid>
             </StackPanel>
-            <!-- first PEP form -->
+            
+            
+            <!-- LUGAR DE LA TRANSACCION form -->
             <StackPanel Orientation="Horizontal" Background="white" Width="641">
                 <StackPanel Orientation="Vertical">
                     <Label FontWeight="Bold" HorizontalAlignment="Center" Margin="10" FontSize="15">
-                        PEP:
+                        LUGAR DE LA TRANSACCION:
                     </Label>
-                    <materialDesign:Card Margin="15 10 5 10 " VerticalAlignment="Stretch" Width="312">
-                        <StackPanel Margin="10,10,-6,10">
+                    <materialDesign:Card Margin="15 10 5 10 " VerticalAlignment="Stretch" Width="312" Height="142">
+                        <StackPanel x:Name="lugar_transacion" Margin="10,10,-6,10">
                             <RadioButton Margin="10"  Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Checked="radio_checked">
-                                <TextBlock Width="272" Height="51">Se encuantra actualmente laboriando en la <LineBreak/>funcion publica o un familiar directo labora en <LineBreak/> la misma</TextBlock>
+                                <TextBlock Width="272" Height="51">TRANSACCIONA DESDE DIFERENTES<LineBreak/> LUGARES   NO ACRODES AL NEGOCIO <LineBreak/> Y SON ZONA  FRONTERA FISCAL  </TextBlock>
                             </RadioButton>
                             <RadioButton Margin="10" Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Checked="radio_checked" >
-                                <TextBlock Width="272" Height="44">Vinculado 2 de afinidad y PEP'S que dejaron sus <LineBreak/>puestos hace 1 ano</TextBlock>
-                            </RadioButton>
-                            <RadioButton Margin="10" Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Checked="radio_checked">
-                                <TextBlock Width="272" Height="50"> Los que fuerosn funcinarios hace mas de <LineBreak/> 3 anos</TextBlock>
+                                <TextBlock Width="272" Height="44">TRANSACCIONA ACORDE AL LUGAR DE<LineBreak/> LA UBICACIÓN DEL NEGOCIO  </TextBlock>
                             </RadioButton>
                         </StackPanel>
                     </materialDesign:Card>
@@ -111,12 +116,12 @@
                 </StackPanel>
                 <Grid Width="268" >
                     <StackPanel Orientation="Vertical" Margin="0,20, 0 ,0">
-                        <Label Content="{Binding Path=XamlPepRisk.PercentageLabel}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                        <Label Content="{Binding Path=XamlPepRisk.RiskLabel}" Foreground="{Binding Path=XamlPepRisk.LabelColor}"  FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                        <Label Content="{Binding Path=XamlLugarTransRisk.PercentageLabel}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                        <Label Content="{Binding Path=XamlLugarTransRisk.RiskLabel}" Foreground="{Binding Path=XamlLugarTransRisk.LabelColor}"  FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" />
                         <StackPanel Background="#FFB0AAB4" Orientation="Vertical" Height="1" Margin="10 10 10 10 ">
                             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                         </StackPanel>
-                        <Label  Content="{Binding Path=XamlPepRisk.RiskVar}" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
+                        <Label  Content="{Binding Path=XamlLugarTransRisk.RiskVar}" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
                         <TextBlock Opacity="100" FontSize="12" HorizontalAlignment="Center" RenderTransformOrigin="0.519,0.156">
                             <TextBlock.Foreground>
                                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
@@ -124,22 +129,21 @@
                     </StackPanel>
                 </Grid>
             </StackPanel>
-            <!-- first PEP form -->
+            
+            
+            <!-- OPERATIVIDAD/FRECUENCIA form -->
             <StackPanel Orientation="Horizontal" Background="white" Width="641">
                 <StackPanel Orientation="Vertical">
                     <Label FontWeight="Bold" HorizontalAlignment="Center" Margin="10" FontSize="15">
-                        PEP:
+                        OPERATIVIDAD/FRECUENCIA:
                     </Label>
                     <materialDesign:Card Margin="15 10 5 10 " VerticalAlignment="Stretch" Width="312">
-                        <StackPanel Margin="10,10,-6,10">
+                        <StackPanel x:Name="frecuencia" Margin="10,10,-6,10" Height="127">
                             <RadioButton Margin="10"  Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Checked="radio_checked">
-                                <TextBlock Width="272" Height="51">Se encuantra actualmente laboriando en la <LineBreak/>funcion publica o un familiar directo labora en <LineBreak/> la misma</TextBlock>
+                                <TextBlock Width="272" Height="51">FRECUENCIA SOBRE PASA A LO ESPERADO<LineBreak/> EN RELACION AL PROMEDIO DE LOS<LineBreak/> ULTIMOS 6 MESES </TextBlock>
                             </RadioButton>
                             <RadioButton Margin="10" Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Checked="radio_checked" >
-                                <TextBlock Width="272" Height="44">Vinculado 2 de afinidad y PEP'S que dejaron sus <LineBreak/>puestos hace 1 ano</TextBlock>
-                            </RadioButton>
-                            <RadioButton Margin="10" Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Checked="radio_checked">
-                                <TextBlock Width="272" Height="50"> Los que fuerosn funcinarios hace mas de <LineBreak/> 3 anos</TextBlock>
+                                <TextBlock Width="272" Height="44">FRECUENCIA ES ACRODE A LO ESPERADO <LineBreak/> </TextBlock>
                             </RadioButton>
                         </StackPanel>
                     </materialDesign:Card>
@@ -149,12 +153,12 @@
                 </StackPanel>
                 <Grid Width="268" >
                     <StackPanel Orientation="Vertical" Margin="0,20, 0 ,0">
-                        <Label Content="{Binding Path=XamlPepRisk.PercentageLabel}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                        <Label Content="{Binding Path=XamlPepRisk.RiskLabel}" Foreground="{Binding Path=XamlPepRisk.LabelColor}"  FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                        <Label Content="{Binding Path=XamlFrecueciaRisk.PercentageLabel}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                        <Label Content="{Binding Path=XamlFrecueciaRisk.RiskLabel}" Foreground="{Binding Path=XamlFrecueciaRisk.LabelColor}"  FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" />
                         <StackPanel Background="#FFB0AAB4" Orientation="Vertical" Height="1" Margin="10 10 10 10 ">
                             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                         </StackPanel>
-                        <Label  Content="{Binding Path=XamlPepRisk.RiskVar}" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
+                        <Label  Content="{Binding Path=XamlFrecueciaRisk.RiskVar}" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
                         <TextBlock Opacity="100" FontSize="12" HorizontalAlignment="Center" RenderTransformOrigin="0.519,0.156">
                             <TextBlock.Foreground>
                                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
@@ -162,22 +166,26 @@
                     </StackPanel>
                 </Grid>
             </StackPanel>
-            <!-- first PEP form -->
+
+            
+            <!-- CAMBIOS EN LAS CONDICIONES form -->
             <StackPanel Orientation="Horizontal" Background="white" Width="641">
-                <StackPanel Orientation="Vertical">
-                    <Label FontWeight="Bold" HorizontalAlignment="Center" Margin="10" FontSize="15">
-                        PEP:
-                    </Label>
-                    <materialDesign:Card Margin="15 10 5 10 " VerticalAlignment="Stretch" Width="312">
-                        <StackPanel Margin="10,10,-6,10">
+                <StackPanel Orientation="Vertical" Height="306">
+                    <TextBlock Foreground="#FF3F3F3F" FontWeight="Bold" HorizontalAlignment="Center" Margin="10" FontSize="15">
+                        CAMBIOS EN LAS
+                        <LineBreak/>
+                        CONDICIONES ESTRUCTURALES:
+                    </TextBlock>
+                    <materialDesign:Card Margin="15 10 5 10 " VerticalAlignment="Stretch" Width="312" Height="219">
+                        <StackPanel x:Name="condiciones" Margin="10,10,-6,10">
                             <RadioButton Margin="10"  Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Checked="radio_checked">
-                                <TextBlock Width="272" Height="51">Se encuantra actualmente laboriando en la <LineBreak/>funcion publica o un familiar directo labora en <LineBreak/> la misma</TextBlock>
+                                <TextBlock Width="272" Height="51"> CAMBIOS NO JUSTIFICADOS </TextBlock>
                             </RadioButton>
                             <RadioButton Margin="10" Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Checked="radio_checked" >
-                                <TextBlock Width="272" Height="44">Vinculado 2 de afinidad y PEP'S que dejaron sus <LineBreak/>puestos hace 1 ano</TextBlock>
+                                <TextBlock Width="272" Height="44"> CAMBIOS JUSTIFICADOS</TextBlock>
                             </RadioButton>
                             <RadioButton Margin="10" Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Checked="radio_checked">
-                                <TextBlock Width="272" Height="50"> Los que fuerosn funcinarios hace mas de <LineBreak/> 3 anos</TextBlock>
+                                <TextBlock Width="272" Height="50"> NO EXISTE CAMBIOS  </TextBlock>
                             </RadioButton>
                         </StackPanel>
                     </materialDesign:Card>
@@ -187,12 +195,12 @@
                 </StackPanel>
                 <Grid Width="268" >
                     <StackPanel Orientation="Vertical" Margin="0,20, 0 ,0">
-                        <Label Content="{Binding Path=XamlPepRisk.PercentageLabel}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                        <Label Content="{Binding Path=XamlPepRisk.RiskLabel}" Foreground="{Binding Path=XamlPepRisk.LabelColor}"  FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                        <Label Content="{Binding Path=XamlCambiosRisk.PercentageLabel}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                        <Label Content="{Binding Path=XamlCambiosRisk.RiskLabel}" Foreground="{Binding Path=XamlCambiosRisk.LabelColor}"  FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" />
                         <StackPanel Background="#FFB0AAB4" Orientation="Vertical" Height="1" Margin="10 10 10 10 ">
                             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                         </StackPanel>
-                        <Label  Content="{Binding Path=XamlPepRisk.RiskVar}" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
+                        <Label  Content="{Binding Path=XamlCambiosRisk.RiskVar}" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
                         <TextBlock Opacity="100" FontSize="12" HorizontalAlignment="Center" RenderTransformOrigin="0.519,0.156">
                             <TextBlock.Foreground>
                                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
@@ -200,22 +208,26 @@
                     </StackPanel>
                 </Grid>
             </StackPanel>
-            <!-- first PEP form -->
+            
+            
+            <!--  TRANSACCIONES INUSUALES form  -->
             <StackPanel Orientation="Horizontal" Background="white" Width="641">
                 <StackPanel Orientation="Vertical">
-                    <Label FontWeight="Bold" HorizontalAlignment="Center" Margin="10" FontSize="15">
-                        PEP:
-                    </Label>
+                    <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Foreground="#FF3F3F3F" Margin="10" FontSize="15" VerticalAlignment="Center">
+                        HISTORICO DE
+                        <LineBreak/>
+                        TRANSACCIONES INUSUALES:
+                    </TextBlock>
                     <materialDesign:Card Margin="15 10 5 10 " VerticalAlignment="Stretch" Width="312">
-                        <StackPanel Margin="10,10,-6,10">
+                        <StackPanel x:Name="inusuales" Margin="10,10,-6,10">
                             <RadioButton Margin="10"  Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Checked="radio_checked">
-                                <TextBlock Width="272" Height="51">Se encuantra actualmente laboriando en la <LineBreak/>funcion publica o un familiar directo labora en <LineBreak/> la misma</TextBlock>
+                                <TextBlock Width="272" Height="51">REGISTRA TRANSACCION INUSUAL NO <LineBreak/> JUSTIFICADA DENTRO DE LOS TRES <LineBreak/> MESES ANTERIORES  </TextBlock>
                             </RadioButton>
                             <RadioButton Margin="10" Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Checked="radio_checked" >
-                                <TextBlock Width="272" Height="44">Vinculado 2 de afinidad y PEP'S que dejaron sus <LineBreak/>puestos hace 1 ano</TextBlock>
+                                <TextBlock Width="272" Height="74">REGISTRA TRANSACCION INUSUAL <LineBreak/> CON JUSTIFICACION/ REGISTRA <LineBreak/> TRANSACCION INUSUAL DENTRO DE <LineBreak/> LOS SEIS MESES ANTRERIORES  </TextBlock>
                             </RadioButton>
                             <RadioButton Margin="10" Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Checked="radio_checked">
-                                <TextBlock Width="272" Height="50"> Los que fuerosn funcinarios hace mas de <LineBreak/> 3 anos</TextBlock>
+                                <TextBlock Width="272" Height="50"> NO EXISTE TRANSACCION INUSUAL </TextBlock>
                             </RadioButton>
                         </StackPanel>
                     </materialDesign:Card>
@@ -225,12 +237,12 @@
                 </StackPanel>
                 <Grid Width="268" >
                     <StackPanel Orientation="Vertical" Margin="0,20, 0 ,0">
-                        <Label Content="{Binding Path=XamlPepRisk.PercentageLabel}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                        <Label Content="{Binding Path=XamlPepRisk.RiskLabel}" Foreground="{Binding Path=XamlPepRisk.LabelColor}"  FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                        <Label Content="{Binding Path=XamlHistInusualRisk.PercentageLabel}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                        <Label Content="{Binding Path=XamlHistInusualRisk.RiskLabel}" Foreground="{Binding Path=XamlHistInusualRisk.LabelColor}"  FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" />
                         <StackPanel Background="#FFB0AAB4" Orientation="Vertical" Height="1" Margin="10 10 10 10 ">
                             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                         </StackPanel>
-                        <Label  Content="{Binding Path=XamlPepRisk.RiskVar}" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
+                        <Label  Content="{Binding Path=XamlHistInusualRisk.RiskVar}" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
                         <TextBlock Opacity="100" FontSize="12" HorizontalAlignment="Center" RenderTransformOrigin="0.519,0.156">
                             <TextBlock.Foreground>
                                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
@@ -238,22 +250,24 @@
                     </StackPanel>
                 </Grid>
             </StackPanel>
-            <!-- first PEP form -->
+            
+            
+            <!-- ESTATUS JUDICIAL form -->
             <StackPanel Orientation="Horizontal" Background="white" Width="641">
                 <StackPanel Orientation="Vertical">
                     <Label FontWeight="Bold" HorizontalAlignment="Center" Margin="10" FontSize="15">
-                        PEP:
+                        ESTATUS JUDICIAL:
                     </Label>
                     <materialDesign:Card Margin="15 10 5 10 " VerticalAlignment="Stretch" Width="312">
-                        <StackPanel Margin="10,10,-6,10">
+                        <StackPanel x:Name="judicial" Margin="10,10,-6,10">
                             <RadioButton Margin="10"  Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Checked="radio_checked">
-                                <TextBlock Width="272" Height="51">Se encuantra actualmente laboriando en la <LineBreak/>funcion publica o un familiar directo labora en <LineBreak/> la misma</TextBlock>
+                                <TextBlock Width="272" Height="87">SENTENCIA S EJECUTORIADAS DELITOS <LineBreak/> SUBYACENTE DE LAVADO DE DINEROS <LineBreak/> ( ESTAFAS FRAUSDES NARCOTRAFICO <LineBreak/>  TERRORISMO SOBRONO EXTORSION <LineBreak/> EVASION FISCAL) </TextBlock>
                             </RadioButton>
                             <RadioButton Margin="10" Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Checked="radio_checked" >
-                                <TextBlock Width="272" Height="44">Vinculado 2 de afinidad y PEP'S que dejaron sus <LineBreak/>puestos hace 1 ano</TextBlock>
+                                <TextBlock Width="272" Height="44"> PROVIDENCIA JUDIACIALES Y COACTIVAS <LineBreak/> (DELITOS SUBYACENTES) <LineBreak/> </TextBlock>
                             </RadioButton>
                             <RadioButton Margin="10" Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Checked="radio_checked">
-                                <TextBlock Width="272" Height="50"> Los que fuerosn funcinarios hace mas de <LineBreak/> 3 anos</TextBlock>
+                                <TextBlock Width="272" Height="50"> NO REGISTRA <LineBreak/> </TextBlock>
                             </RadioButton>
                         </StackPanel>
                     </materialDesign:Card>
@@ -263,50 +277,12 @@
                 </StackPanel>
                 <Grid Width="268" >
                     <StackPanel Orientation="Vertical" Margin="0,20, 0 ,0">
-                        <Label Content="{Binding Path=XamlPepRisk.PercentageLabel}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                        <Label Content="{Binding Path=XamlPepRisk.RiskLabel}" Foreground="{Binding Path=XamlPepRisk.LabelColor}"  FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                        <Label Content="{Binding Path=XamlStatulJudicialRisk.PercentageLabel}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                        <Label Content="{Binding Path=XamlStatulJudicialRisk.RiskLabel}" Foreground="{Binding Path=XamlStatulJudicialRisk.LabelColor}"  FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" />
                         <StackPanel Background="#FFB0AAB4" Orientation="Vertical" Height="1" Margin="10 10 10 10 ">
                             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                         </StackPanel>
-                        <Label  Content="{Binding Path=XamlPepRisk.RiskVar}" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
-                        <TextBlock Opacity="100" FontSize="12" HorizontalAlignment="Center" RenderTransformOrigin="0.519,0.156">
-                            <TextBlock.Foreground>
-                                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
-                            </TextBlock.Foreground> Riesgo Variable</TextBlock>
-                    </StackPanel>
-                </Grid>
-            </StackPanel>
-            <!-- first PEP form -->
-            <StackPanel Orientation="Horizontal" Background="white" Width="641">
-                <StackPanel Orientation="Vertical">
-                    <Label FontWeight="Bold" HorizontalAlignment="Center" Margin="10" FontSize="15">
-                        PEP:
-                    </Label>
-                    <materialDesign:Card Margin="15 10 5 10 " VerticalAlignment="Stretch" Width="312">
-                        <StackPanel Margin="10,10,-6,10">
-                            <RadioButton Margin="10"  Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Checked="radio_checked">
-                                <TextBlock Width="272" Height="51">Se encuantra actualmente laboriando en la <LineBreak/>funcion publica o un familiar directo labora en <LineBreak/> la misma</TextBlock>
-                            </RadioButton>
-                            <RadioButton Margin="10" Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Checked="radio_checked" >
-                                <TextBlock Width="272" Height="44">Vinculado 2 de afinidad y PEP'S que dejaron sus <LineBreak/>puestos hace 1 ano</TextBlock>
-                            </RadioButton>
-                            <RadioButton Margin="10" Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Checked="radio_checked">
-                                <TextBlock Width="272" Height="50"> Los que fuerosn funcinarios hace mas de <LineBreak/> 3 anos</TextBlock>
-                            </RadioButton>
-                        </StackPanel>
-                    </materialDesign:Card>
-                </StackPanel>
-                <StackPanel Background="#FFB0AAB4" Orientation="Horizontal" Width="1" Margin="20">
-                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
-                </StackPanel>
-                <Grid Width="268" >
-                    <StackPanel Orientation="Vertical" Margin="0,20, 0 ,0">
-                        <Label Content="{Binding Path=XamlPepRisk.PercentageLabel}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                        <Label Content="{Binding Path=XamlPepRisk.RiskLabel}" Foreground="{Binding Path=XamlPepRisk.LabelColor}"  FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" />
-                        <StackPanel Background="#FFB0AAB4" Orientation="Vertical" Height="1" Margin="10 10 10 10 ">
-                            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
-                        </StackPanel>
-                        <Label  Content="{Binding Path=XamlPepRisk.RiskVar}" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
+                        <Label  Content="{Binding Path=XamlStatulJudicialRisk.RiskVar}" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
                         <TextBlock Opacity="100" FontSize="12" HorizontalAlignment="Center" RenderTransformOrigin="0.519,0.156">
                             <TextBlock.Foreground>
                                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>

@@ -49,19 +49,19 @@ namespace fidecomiso2
         public Cliente()
         {
             PV = new PageVars();
-            PepRisk = new RiskField(0.3m);
-            ActividadRisk = new RiskField(0.1m);
-            AgeRisk = new RiskField(0.15m);
-            PatrimonyRisk = new RiskField(0.1m);
-            IncomeRisk = new RiskField(0.2m);
-            FlowRisk = new RiskField(0.15m);
+            PepRisk = new RiskField("PEP", 0.3m);
+            ActividadRisk = new RiskField("Activity", 0.1m);
+            AgeRisk = new RiskField("Age", 0.15m);
+            PatrimonyRisk = new RiskField("Patrimony", 0.1m);
+            IncomeRisk = new RiskField("Income", 0.2m);
+            FlowRisk = new RiskField("Flow", 0.15m);
 
-            (App.Current as App).Analysis.ClienteRisks.Add("PEP", PepRisk);
-            (App.Current as App).Analysis.ClienteRisks.Add("Activity", ActividadRisk);
-            (App.Current as App).Analysis.ClienteRisks.Add("Age", AgeRisk);
-            (App.Current as App).Analysis.ClienteRisks.Add("Patrimony", PatrimonyRisk);
-            (App.Current as App).Analysis.ClienteRisks.Add("Income", IncomeRisk);
-            (App.Current as App).Analysis.ClienteRisks.Add("Flow", FlowRisk);
+            (App.Current as App).Analysis.AddRiskFact1(PepRisk);
+            (App.Current as App).Analysis.AddRiskFact1(ActividadRisk);
+            (App.Current as App).Analysis.AddRiskFact1(AgeRisk);
+            (App.Current as App).Analysis.AddRiskFact1(PatrimonyRisk);
+            (App.Current as App).Analysis.AddRiskFact1(IncomeRisk);
+            (App.Current as App).Analysis.AddRiskFact1(FlowRisk);
         
             this.DataContext = this;
             InitializeComponent();

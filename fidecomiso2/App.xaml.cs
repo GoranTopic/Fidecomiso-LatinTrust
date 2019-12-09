@@ -13,7 +13,9 @@ namespace fidecomiso2
     /// </summary>
     public partial class App : Application
     {
-
+       //
         public RiskAnalysis Analysis = new RiskAnalysis();
+
+       
     }
 }

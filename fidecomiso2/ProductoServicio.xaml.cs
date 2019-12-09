@@ -26,9 +26,9 @@ namespace fidecomiso2
         public RiskField XamlProdServ { get { return ProdServ; } }
         public ProductoServicio()
         {
-            ProdServ = new RiskField(1);
+            ProdServ = new RiskField("ProductService", 1);
             
-            (App.Current as App).Analysis.ProductService.Add("ProductService", ProdServ);
+            (App.Current as App).Analysis.AddRiskFact1(ProdServ);
 
             this.DataContext = this;
             InitializeComponent();

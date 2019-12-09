@@ -47,20 +47,20 @@ namespace fidecomiso2
 
         public RiesgoTransacional()
         {
-            VSPromedioRisk = new RiskField(0.2m);
-            VSIngresosRisk = new RiskField(0.2m);
-            LugarTransRisk = new RiskField(0.1m);
-            FrecueciaRisk = new RiskField(0.1m);
-            CambiosRisk = new RiskField(0.15m);
-            HistInusualRisk = new RiskField(0.1m);
-            StatulJudicialRisk = new RiskField(0.15m);
+            VSPromedioRisk = new RiskField("VersusAverage", 0.2m);
+            VSIngresosRisk = new RiskField("VersusIncome", 0.2m);
+            LugarTransRisk = new RiskField("TransactionPlace", 0.1m);
+            FrecueciaRisk = new RiskField("Frequency", 0.1m);
+            CambiosRisk = new RiskField("Changes", 0.15m);
+            HistInusualRisk = new RiskField("UnusualHIstory", 0.1m);
+            StatulJudicialRisk = new RiskField("JudicialStatus", 0.15m);
 
-            (App.Current as App).Analysis.TransactionalRisk.Add("VersusAverage", VSPromedioRisk);
-            (App.Current as App).Analysis.TransactionalRisk.Add("VersusIncome", VSIngresosRisk);
-            (App.Current as App).Analysis.TransactionalRisk.Add("TransactionPlace", LugarTransRisk);
-            (App.Current as App).Analysis.TransactionalRisk.Add("Changes", CambiosRisk);
-            (App.Current as App).Analysis.TransactionalRisk.Add("UnusualHIstory", HistInusualRisk);
-            (App.Current as App).Analysis.TransactionalRisk.Add("JudicialStatus", StatulJudicialRisk);
+            (App.Current as App).Analysis.AddRiskFact2(VSPromedioRisk);
+            (App.Current as App).Analysis.AddRiskFact2(VSIngresosRisk);
+            (App.Current as App).Analysis.AddRiskFact2(LugarTransRisk);
+            (App.Current as App).Analysis.AddRiskFact2(CambiosRisk);
+            (App.Current as App).Analysis.AddRiskFact2(HistInusualRisk);
+            (App.Current as App).Analysis.AddRiskFact2(StatulJudicialRisk);
 
             this.DataContext = this;
             InitializeComponent();

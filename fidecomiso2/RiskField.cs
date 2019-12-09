@@ -24,6 +24,17 @@ namespace fidecomiso2
             set { _Risk = value; }
         }
 
+        private object _Name;
+        public object Name
+        {
+            get { return _Name; }
+            set
+            {
+                _Name = value;
+                OnPropertyChanged("Name");
+            }
+        }
+
         private object _Vault;
         public object Vault
         {
@@ -97,17 +108,21 @@ namespace fidecomiso2
             }
         }
 
-        public RiskField(decimal Percentage)
+        public RiskField(string Name, decimal Percentage)
         {
             this.Percentage = Percentage;
             PercentageLabel = decimal.Round((_Precentage * 100), 0).ToString() + "%";
             RiskVar = 1 * _Precentage;
+
+            this.Name = Name;
+
         }
 
         public void SetRisk(int risk)
         {
             Risk = risk;
             UpdateRiskFields();
+            (App.Current as App).Analysis.update();
         }
 
         public void UpdateRiskFields()

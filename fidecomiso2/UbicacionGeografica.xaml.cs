@@ -28,8 +28,12 @@ namespace fidecomiso2
         public RiskField XamlLugarEco { get { return LugarEco; } }
         public UbicacionGeografica()
         {
-            UbcGeo = new RiskField(0.4m);
-            LugarEco = new RiskField(0.6m);
+            UbcGeo = new RiskField("GeoLocation", 0.4m);
+            LugarEco = new RiskField("EconomicActivityLocation", 0.6m);
+
+
+            (App.Current as App).Analysis.AddRiskFact1(UbcGeo);
+            (App.Current as App).Analysis.AddRiskFact1(LugarEco);
             this.DataContext = this;
             InitializeComponent();
         }

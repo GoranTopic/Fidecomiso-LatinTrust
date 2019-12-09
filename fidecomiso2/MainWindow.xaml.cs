@@ -26,7 +26,7 @@ namespace fidecomiso2
         ProductoServicio PS_Page = new ProductoServicio();
         CanalVinculacion CV_Page = new CanalVinculacion();
         RiesgoTransacional RTrans_Page = new RiesgoTransacional();
-        RiskChart Chart_Page = new RiskChart();
+        RiskChart Chart_Page = (App.Current as App).Analysis.Chart_Page;
 
         public MainWindow()
         {

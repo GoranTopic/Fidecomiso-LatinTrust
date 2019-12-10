@@ -49,11 +49,11 @@
                 <lvc:CartesianChart.Series>
                     <lvc:ScatterSeries Title="Riesgo Final" Values="{Binding ScatterValues}"
                     PointGeometry="{x:Static lvc:DefaultGeometries.Diamond}"
-                    StrokeThickness="2" Stroke="#FF47255D" Fill="Transparent" />
+                    StrokeThickness="2" Stroke="#FF47255D" Fill="Transparent" Height="120"  />
                 </lvc:CartesianChart.Series>
                 <lvc:CartesianChart.AxisY>
                     <!--setting the axis unit improved the labels rounding rule-->
-                    <lvc:Axis Unit="0.1" Foreground="DarkRed" MaxValue="3" MinValue="1">
+                    <lvc:Axis Unit="0.1" Foreground="#FF47255D" MaxValue="3" MinValue="1">
                         <lvc:Axis.Separator>
                             <lvc:Separator Stroke="Transparent"/>
                         </lvc:Axis.Separator>
@@ -62,7 +62,7 @@
                 </lvc:CartesianChart.AxisY>
                 <lvc:CartesianChart.AxisX>
                     <!--setting the axis unit improved the labels rounding rule-->
-                    <lvc:Axis Unit="0.1" Foreground="DarkRed"  MaxValue="3" MinValue="1">
+                    <lvc:Axis Unit="0.1" Foreground="#FF47255D"  MaxValue="3" MinValue="1">
                         <lvc:Axis.Sections>
                             <lvc:AxisSection Value="{Binding XAxisMinValue}" />
                         </lvc:Axis.Sections>

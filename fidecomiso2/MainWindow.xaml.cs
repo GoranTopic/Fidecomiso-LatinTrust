@@ -141,13 +141,21 @@ namespace fidecomiso2
 
         private void SaveAnalysis(object sender, RoutedEventArgs e)
         {
-            //BuildPngOnClick("charty");
-           // Stream file = File.Create("Chart");
-           // var result = Helpers.GetImage((App.Current as App).Analysis.Chart_Page.ChartsGrid);
-           
-            //Helpers.SaveAsPng(result, file);
 
+            if (Helpers.IsWindowOpen<GraphWindow>())
+            {
+                GrapWin.Close();
+                Debug.WriteLine("window graph open, continue");
+            }
+            else if (MainFrame.Content == Chart_Page)
+            {
+                Debug.WriteLine("chart opend, continue");
+            }
+            else return;
+            
+           
             RiskChart control = (App.Current as App).Analysis.Chart_Page;
+            control.InitializeComponent();
             double width = control.ActualWidth;
             double height = control.ActualHeight;
 

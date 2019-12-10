@@ -41,6 +41,20 @@ namespace fidecomiso2
             return RiskSum * Weight;
         }
 
+
+        private void print_Risks(List<RiskField> ListofRisks, double Weight)
+        {
+            double sum = 0;
+            foreach (RiskField risk in ListofRisks)
+            {
+                Debug.WriteLine("   " + risk.Name);
+                Debug.WriteLine("   " + risk.RiskVar);
+                sum += (double)risk.RiskVar;
+            }
+            Debug.WriteLine("   Raw Sum: {0} * {1} = {2}", sum, Weight, sum * Weight);
+
+        }
+
         public void UpdateRisks()
         {
 
@@ -55,34 +69,24 @@ namespace fidecomiso2
             double VinChaRisk = CalcSumRisk(VinChaRisks, 0.1);
 
 
-            
-            /* DEBUGGING PORPUSES
-            Debug.WriteLine("client:{0}", ClientRisk );
-            foreach (RiskField risk in ClientRisks)
-            {
-                Debug.WriteLine("   " + risk.Name);
-                Debug.WriteLine("   " + risk.RiskVar);
-            }
 
-            Debug.WriteLine("Geo:{0},", GeoLocRisk );
-            foreach (RiskField risk in GeoLocRisks) {
-                Debug.WriteLine("   " + risk.Name);
-                Debug.WriteLine("   " + risk.RiskVar);
-            }
 
-            Debug.WriteLine("Proserv:{0},", ProSerRisk );
-            foreach (RiskField risk in ProSerRisks) {
-                Debug.WriteLine("   " + risk.Name);
-                Debug.WriteLine("   " + risk.RiskVar);
-            }
 
-            Debug.WriteLine("VincChal:{0},", VinChaRisk );
-            foreach (RiskField risk in VinChaRisks) {
-                Debug.WriteLine("   " + risk.Name);
-                Debug.WriteLine("   " + risk.RiskVar);
-            }
-            */
+            Debug.WriteLine("-------------");
+            Debug.WriteLine("-------------");
+            /* DEBUGGING PORPUSES */
+            Debug.WriteLine("Client Risks:");
+            print_Risks(ClientRisks, 0.45);
 
+
+            Debug.WriteLine("Geoloacation");
+            print_Risks(GeoLocRisks, 0.1);
+
+            Debug.WriteLine("Product and service");
+            print_Risks(ProSerRisks, 0.35);
+
+            Debug.WriteLine("Vinculation Channels");
+            print_Risks(VinChaRisks, 0.1);
 
             //final risk factor 1
             TotalRisk1 = ClientRisk + GeoLocRisk + ProSerRisk + VinChaRisk;
@@ -91,9 +95,12 @@ namespace fidecomiso2
             //calculate the transactional risk with a weight of 100%
             double TransRisk = CalcSumRisk(TransacationalRisks, 1);
 
+            Debug.WriteLine("Trans Risk: ");
+            print_Risks(TransacationalRisks, 1);
             //final risk factor 1
             TotalRisk2 = TransRisk;
 
+            Debug.WriteLine("X: {0}, y: {1}", TotalRisk1, TotalRisk2);
             //update chart point 
             Chart_Page.UpdatePoint(TotalRisk1, TotalRisk2);
         }

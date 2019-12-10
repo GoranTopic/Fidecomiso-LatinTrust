@@ -48,7 +48,8 @@ namespace fidecomiso2
         }
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("RiesgoTransacional.xaml", UriKind.Relative));
+            fidecomiso2.MainWindow mw = (fidecomiso2.MainWindow)App.Current.MainWindow;
+            mw.MainFrame.Content = mw.RTrans_Page;
         }
     }
 }

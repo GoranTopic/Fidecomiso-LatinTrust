@@ -30,14 +30,14 @@ namespace fidecomiso2
 
         public WinVars Xamlvars { get { return vars; } }
 
-        Cliente Client_Page = new Cliente();
-        UbicacionGeografica UG_Page = new UbicacionGeografica();
-        ProductoServicio PS_Page = new ProductoServicio();
-        CanalVinculacion CV_Page = new CanalVinculacion();
-        RiesgoTransacional RTrans_Page = new RiesgoTransacional();
+        public Cliente Client_Page = new Cliente();
+        public UbicacionGeografica UG_Page = new UbicacionGeografica();
+        public ProductoServicio PS_Page = new ProductoServicio();
+        public CanalVinculacion CV_Page = new CanalVinculacion();
+        public RiesgoTransacional RTrans_Page = new RiesgoTransacional();
         Password pswd_page = new Password();
-        RiskChart Chart_Page = (App.Current as App).Analysis.Chart_Page;
-        GraphWindow GrapWin;
+        public RiskChart Chart_Page = (App.Current as App).Analysis.Chart_Page;
+        public GraphWindow GrapWin;
         
         public MainWindow()
         {
@@ -183,7 +183,7 @@ namespace fidecomiso2
     }
     public class WinVars : INotifyPropertyChanged
     {
-        private bool _IsLogin = false;
+        private bool _IsLogin = true;
         public bool IsLogin
         {
             get { return _IsLogin; }

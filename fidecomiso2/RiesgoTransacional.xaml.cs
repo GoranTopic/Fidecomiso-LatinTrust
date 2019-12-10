@@ -58,6 +58,7 @@ namespace fidecomiso2
             (App.Current as App).Analysis.TransacationalRisks.Add(VSPromedioRisk);
             (App.Current as App).Analysis.TransacationalRisks.Add(VSIngresosRisk);
             (App.Current as App).Analysis.TransacationalRisks.Add(LugarTransRisk);
+            (App.Current as App).Analysis.TransacationalRisks.Add(FrecueciaRisk);
             (App.Current as App).Analysis.TransacationalRisks.Add(CambiosRisk);
             (App.Current as App).Analysis.TransacationalRisks.Add(HistInusualRisk);
             (App.Current as App).Analysis.TransacationalRisks.Add(StatulJudicialRisk);
@@ -127,7 +128,12 @@ namespace fidecomiso2
                 count--;
             }
         }
-
+         private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            fidecomiso2.MainWindow mw = (fidecomiso2.MainWindow)App.Current.MainWindow;
+            if (Helpers.IsWindowOpen<GraphWindow>()) mw.GrapWin.Close();
+            mw.MainFrame.Content = mw.Chart_Page;
+        }
         public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
         {
             if (depObj != null)
@@ -141,9 +147,5 @@ namespace fidecomiso2
             }
         }
 
-        private void NextButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(new Uri("UbicacionGeografica.xaml", UriKind.Relative));
-        }
-    }
+     }
 }

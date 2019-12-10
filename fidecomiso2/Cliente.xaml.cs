@@ -56,12 +56,12 @@ namespace fidecomiso2
             IncomeRisk = new RiskField("Income", 0.2m);
             FlowRisk = new RiskField("Flow", 0.15m);
 
-            (App.Current as App).Analysis.AddRiskFact1(PepRisk);
-            (App.Current as App).Analysis.AddRiskFact1(ActividadRisk);
-            (App.Current as App).Analysis.AddRiskFact1(AgeRisk);
-            (App.Current as App).Analysis.AddRiskFact1(PatrimonyRisk);
-            (App.Current as App).Analysis.AddRiskFact1(IncomeRisk);
-            (App.Current as App).Analysis.AddRiskFact1(FlowRisk);
+            (App.Current as App).Analysis.ClientRisks.Add(PepRisk);
+            (App.Current as App).Analysis.ClientRisks.Add(ActividadRisk);
+            (App.Current as App).Analysis.ClientRisks.Add(AgeRisk);
+            (App.Current as App).Analysis.ClientRisks.Add(PatrimonyRisk);
+            (App.Current as App).Analysis.ClientRisks.Add(IncomeRisk);
+            (App.Current as App).Analysis.ClientRisks.Add(FlowRisk);
         
             this.DataContext = this;
             InitializeComponent();

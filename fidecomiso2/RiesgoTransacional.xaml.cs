@@ -55,24 +55,20 @@ namespace fidecomiso2
             HistInusualRisk = new RiskField("UnusualHIstory", 0.1m);
             StatulJudicialRisk = new RiskField("JudicialStatus", 0.15m);
 
-            (App.Current as App).Analysis.AddRiskFact2(VSPromedioRisk);
-            (App.Current as App).Analysis.AddRiskFact2(VSIngresosRisk);
-            (App.Current as App).Analysis.AddRiskFact2(LugarTransRisk);
-            (App.Current as App).Analysis.AddRiskFact2(CambiosRisk);
-            (App.Current as App).Analysis.AddRiskFact2(HistInusualRisk);
-            (App.Current as App).Analysis.AddRiskFact2(StatulJudicialRisk);
+            (App.Current as App).Analysis.TransacationalRisks.Add(VSPromedioRisk);
+            (App.Current as App).Analysis.TransacationalRisks.Add(VSIngresosRisk);
+            (App.Current as App).Analysis.TransacationalRisks.Add(LugarTransRisk);
+            (App.Current as App).Analysis.TransacationalRisks.Add(CambiosRisk);
+            (App.Current as App).Analysis.TransacationalRisks.Add(HistInusualRisk);
+            (App.Current as App).Analysis.TransacationalRisks.Add(StatulJudicialRisk);
 
             this.DataContext = this;
             InitializeComponent();
         }
 
-
-
-
         private void radio_checked(object sender, RoutedEventArgs e)
         {
             int count;
-            
             count = 3;
             foreach (RadioButton cb in RiskField.FindVisualChildren<RadioButton>(vspromedio))
             {
@@ -130,8 +126,6 @@ namespace fidecomiso2
                 if ((bool)cb.IsChecked) StatulJudicialRisk.SetRisk(count);
                 count--;
             }
-
-
         }
 
         public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject

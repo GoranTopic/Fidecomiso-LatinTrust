@@ -32,8 +32,8 @@ namespace fidecomiso2
             LugarEco = new RiskField("EconomicActivityLocation", 0.6m);
 
 
-            (App.Current as App).Analysis.AddRiskFact1(UbcGeo);
-            (App.Current as App).Analysis.AddRiskFact1(LugarEco);
+            (App.Current as App).Analysis.GeoLocRisks.Add(UbcGeo);
+            (App.Current as App).Analysis.GeoLocRisks.Add(LugarEco);
             this.DataContext = this;
             InitializeComponent();
         }

@@ -48,24 +48,24 @@ namespace fidecomiso2
 
        
 
-        private string _PrecentageLabel;
+        private string _PercentageLabel;
         public string PercentageLabel
         {
-            get { return _PrecentageLabel; }
+            get { return _PercentageLabel; }
             set
             {
-                _PrecentageLabel = value;
+                _PercentageLabel = value;
                 OnPropertyChanged("Percentage");
             }
         }
 
-        private decimal _Precentage;
+        private decimal _Percentage;
         public decimal Percentage
         {
-            get { return _Precentage; }
+            get { return _Percentage; }
             set
             {
-                _Precentage = value;
+                _Percentage = value;
                 OnPropertyChanged("Percentage");
             }
         }
@@ -111,8 +111,8 @@ namespace fidecomiso2
         public RiskField(string Name, decimal Percentage)
         {
             this.Percentage = Percentage;
-            PercentageLabel = decimal.Round((_Precentage * 100), 0).ToString() + "%";
-            RiskVar = 1 * _Precentage;
+            PercentageLabel = decimal.Round((_Percentage * 100), 0).ToString() + "%";
+            RiskVar = 1 * _Percentage;
 
             this.Name = Name;
 
@@ -121,35 +121,36 @@ namespace fidecomiso2
         public void SetRisk(int risk)
         {
             Risk = risk;
+
             UpdateRiskFields();
-            (App.Current as App).Analysis.update();
+            (App.Current as App).Analysis.UpdateRisks();
         }
 
-        public void UpdateRiskFields()
+        private void UpdateRiskFields()
         {
             if (_Risk == 0)
             {
                 RiskLabel = "N/A";
                 LabelColor = LabelColor = Brushes.Gray;
-                RiskVar = _Risk * _Precentage;
+                RiskVar = 1 * _Percentage;
             }
             else if (_Risk == 1)
             {
                 RiskLabel = "Bajo";
                 LabelColor = LabelColor = Brushes.ForestGreen;
-                RiskVar = _Risk * _Precentage;
+                RiskVar = _Risk * _Percentage;
             }
             else if (_Risk == 2)
             {
                 RiskLabel = "Medio";
                 LabelColor = LabelColor = Brushes.Goldenrod;
-                RiskVar = _Risk * _Precentage;
+                RiskVar = _Risk * _Percentage;
             }
             else if (_Risk == 3)
             {
                 RiskLabel = "Alto";
                 LabelColor = LabelColor = Brushes.IndianRed;
-                RiskVar = _Risk * _Precentage;
+                RiskVar = _Risk * _Percentage;
             }
 
         }

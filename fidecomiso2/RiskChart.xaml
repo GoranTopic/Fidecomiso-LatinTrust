@@ -6,38 +6,73 @@
                  xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
                  xmlns:local="clr-namespace:fidecomiso2"
                  mc:Ignorable="d" 
-                 d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <lvc:CartesianChart LegendLocation="Right" Margin="0,17,0,-17" >
-            
-            
-            <lvc:CartesianChart.Series>
-                <lvc:HeatSeries Values="{Binding HeatValues}" DataLabels="True">
+                 d:DesignHeight="300" d:DesignWidth="300"
+    >
+    <Grid x:Name="ChartsGrid">
+            <lvc:CartesianChart x:Name="HeatChart" LegendLocation="None"  Margin="34,30,10,40" >
+                <lvc:CartesianChart.Series>
+                    <lvc:HeatSeries Values="{Binding HeatValues}" DataLabels="True">
+                        <lvc:HeatSeries.DrawsHeatRange  >
+                            true
+                        </lvc:HeatSeries.DrawsHeatRange>
 
-                    <!--
-                    The GradientStopCollection is optional to define a custom gradient
-                    If this property is not specified, LiveCharts will set a gradient
-                    -->
+                        <lvc:HeatSeries.GradientStopCollection>
+                            <GradientStop Offset=".0" Color="#FF1BCD00"></GradientStop>
+                            <GradientStop Offset=".25" Color="#FFA8B811"></GradientStop>
+                            <GradientStop Offset=".50" Color="#FFF9FF00"></GradientStop>
+                            <GradientStop Offset=".75" Color="#FFF12511"></GradientStop>
+                            <GradientStop Offset="1" Color="#FFCC0000"></GradientStop>
+                            <GradientStop Offset="100" Color="#FF9053CC"></GradientStop>
+                        </lvc:HeatSeries.GradientStopCollection>
+                    </lvc:HeatSeries>
+                </lvc:CartesianChart.Series>
+                <lvc:CartesianChart.AxisY>
+                    <lvc:Axis Foreground="Transparent">
+                        <lvc:Axis.Separator>
+                            <lvc:Separator Stroke="Transparent"/>
+                        </lvc:Axis.Separator>
+                    </lvc:Axis>
+                </lvc:CartesianChart.AxisY>
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis  Foreground="Transparent">
+                        <lvc:Axis.Sections>
+                            <lvc:AxisSection Value="{Binding XAxisMinValue}" />
+                        </lvc:Axis.Sections>
+                        <lvc:Axis.Separator>
+                            <lvc:Separator Stroke="Transparent"/>
+                        </lvc:Axis.Separator>
+                    </lvc:Axis>
+                </lvc:CartesianChart.AxisX>
+            </lvc:CartesianChart>
 
-                    <lvc:HeatSeries.GradientStopCollection>
-                        <GradientStop Offset="0" Color="#99FFFF00"></GradientStop>
-                        <GradientStop Offset=".25" Color="#FFFFFF00"></GradientStop>
-                        <GradientStop Offset=".50" Color="#990000FF"></GradientStop>
-                        <GradientStop Offset=".75" Color="#FF0000FF"></GradientStop>
-                        <GradientStop Offset="1" Color="#50505050"></GradientStop>
-                    </lvc:HeatSeries.GradientStopCollection>
-                </lvc:HeatSeries>
-            </lvc:CartesianChart.Series>
-            <lvc:CartesianChart.AxisX >
-                <lvc:Axis Labels="{Binding RiskAxis}" LabelsRotation="-15">
-                    <lvc:Axis.Separator>
-                        <lvc:Separator Step="1"></lvc:Separator>
-                    </lvc:Axis.Separator>
-                </lvc:Axis>
-            </lvc:CartesianChart.AxisX>
-            <lvc:CartesianChart.AxisY>
-                <lvc:Axis Labels="{Binding RiskAxis}"></lvc:Axis>
-            </lvc:CartesianChart.AxisY>
-        </lvc:CartesianChart>
+            <lvc:CartesianChart  x:Name="ScatterChart" LegendLocation="Top" Margin ="26,10,15,26">
+                <lvc:CartesianChart.Series>
+                    <lvc:ScatterSeries Title="Riesgo Final" Values="{Binding ScatterValues}"
+                    PointGeometry="{x:Static lvc:DefaultGeometries.Diamond}"
+                    StrokeThickness="2" Stroke="#FF47255D" Fill="Transparent" />
+                </lvc:CartesianChart.Series>
+                <lvc:CartesianChart.AxisY>
+                    <!--setting the axis unit improved the labels rounding rule-->
+                    <lvc:Axis Unit="0.1" Foreground="DarkRed" MaxValue="3" MinValue="1">
+                        <lvc:Axis.Separator>
+                            <lvc:Separator Stroke="Transparent"/>
+                        </lvc:Axis.Separator>
+                    </lvc:Axis>
+
+                </lvc:CartesianChart.AxisY>
+                <lvc:CartesianChart.AxisX>
+                    <!--setting the axis unit improved the labels rounding rule-->
+                    <lvc:Axis Unit="0.1" Foreground="DarkRed"  MaxValue="3" MinValue="1">
+                        <lvc:Axis.Sections>
+                            <lvc:AxisSection Value="{Binding XAxisMinValue}" />
+                        </lvc:Axis.Sections>
+                        <lvc:Axis.Separator>
+                            <lvc:Separator Stroke="Transparent"/>
+                        </lvc:Axis.Separator>
+                    </lvc:Axis>
+
+                </lvc:CartesianChart.AxisX>
+            </lvc:CartesianChart>
+
     </Grid>
 </UserControl>

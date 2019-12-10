@@ -20,6 +20,7 @@ using LiveCharts;
 using LiveCharts.Wpf;
 using System.Diagnostics;
 using LiveCharts.Defaults;
+using System.IO;
 
 namespace fidecomiso2
 {
@@ -27,75 +28,69 @@ namespace fidecomiso2
     /// Interaction logic for MaterialCards.xaml
     /// </summary>
     /// 
-    public partial class RiskChart : UserControl
+    public partial class RiskChart : UserControl , ICloneable 
     {
         public SeriesCollection SeriesCollection { get; set; }
         public ChartValues<HeatPoint> HeatValues { get; set; }
-        public ChartValues<ObservablePoint> PointValue { get; set; }
-        public ObservablePoint RiskPoint { get; set; }
-
+        public ChartValues<ObservablePoint> ScatterValues { get; set; }
+        //public ObservablePoint RiskPoint { get; set; }
 
         public double[] RiskAxis { get; set; }
-        
+
         //chart page object 
         public RiskChart()
         {
 
-            RiskAxis = new double[90];
-            double x = 0.0;
-            for (int i = 0; i < 90; i++)
-            {
-                RiskAxis[i] = x+=0.1;
-            }
             var r = new Random();
-            RiskPoint = new ObservablePoint(0, 0);
-            PointValue = new ChartValues<ObservablePoint>();
-            HeatValues = new ChartValues<HeatPoint>
+            ObservablePoint RiskPoint = new ObservablePoint(2, 2);
+
+            ScatterValues = new ChartValues<ObservablePoint>();
+
+            ScatterValues.Add(RiskPoint);
+
+            foreach (ObservablePoint point in ScatterValues)
             {
+                //Debug.WriteLine("x:{0}, y:{1}", point.X, point.Y);
+            }
 
-                new HeatPoint(0, 0, r.Next(0, 10)),
-                new HeatPoint(0, 1, r.Next(0, 10)),
-                new HeatPoint(0, 2, r.Next(0, 10)),
-                new HeatPoint(0, 3, r.Next(0, 10)),
-                new HeatPoint(0, 4, r.Next(0, 10)),
-                new HeatPoint(0, 5, r.Next(0, 10)),
-                new HeatPoint(0, 6, r.Next(0, 10)),
- 
-                //"Lorena Hoffman"
-                new HeatPoint(1, 0, r.Next(0, 10)),
-                new HeatPoint(1, 1, r.Next(0, 10)),
-                new HeatPoint(1, 2, r.Next(0, 10)),
-                new HeatPoint(1, 3, r.Next(0, 10)),
-                new HeatPoint(1, 4, r.Next(0, 10)),
-                new HeatPoint(1, 5, r.Next(0, 10)),
-                new HeatPoint(1, 6, r.Next(0, 10)),
+            HeatValues = new ChartValues<HeatPoint>();
 
-            };
+            for (double X = 1; X <= 3; X += 1)
+            {
+                for (double Y = 1; Y <= 3; Y += 1)
+                {
+                    if ((int)X == (int)RiskPoint.X && (int)Y == (int)RiskPoint.Y)
+                        HeatValues.Add(new HeatPoint(X, Y, 2));
+                    HeatValues.Add(new HeatPoint(X, Y, X * Y));
+                }
+            }
 
 
-            PointValue.Add(RiskPoint);
 
             this.DataContext = this;
             InitializeComponent();
 
             SeriesCollection = new SeriesCollection
             {
-
                 new HeatSeries
                 {
                     Title = "MyHeat",
                     Values = HeatValues,
                 },
-                /*
-                new ScatterSeries
-                {
-                    Title = "MyRiskPoint",
-                    Values = PointValue,
-                    PointGeometry = DefaultGeometries.Circle
-                },
-                */
 
             };
+
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+
+        public void UpdatePoint(double x, double y)
+        {
+            ScatterValues[0].X = x;
+            ScatterValues[0].Y = y;
 
         }
 
@@ -103,9 +98,6 @@ namespace fidecomiso2
 
 
     }
-
-
 }
-
 
 

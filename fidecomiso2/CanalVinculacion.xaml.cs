@@ -27,7 +27,7 @@ namespace fidecomiso2
         {
             CanalVinc = new RiskField("VinculationChannels", 1m);
             
-            (App.Current as App).Analysis.AddRiskFact1(CanalVinc);
+            (App.Current as App).Analysis.VinChaRisks.Add(CanalVinc);
             
             this.DataContext = this;
             InitializeComponent();

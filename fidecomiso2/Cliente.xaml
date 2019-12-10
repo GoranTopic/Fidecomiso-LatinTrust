@@ -194,7 +194,7 @@
             </StackPanel>
             <Grid Width="268" >
                 <StackPanel Orientation="Vertical" Margin="0,20, 0 ,0">
-                    <Label Content="{Binding Path=XamlIncomeRisk.Percentage}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                    <Label Content="{Binding Path=XamlIncomeRisk.PercentageLabel}" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                     <Label Content="{Binding Path=XamlIncomeRisk.RiskLabel}" Foreground="{Binding Path=XamlIncomeRisk.LabelColor}"  FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                     <StackPanel Background="#FFB0AAB4" Orientation="Vertical" Height="1" Margin="10 10 10 10 ">
                         <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />

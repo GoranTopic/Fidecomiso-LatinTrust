@@ -43,7 +43,7 @@
     <Grid Background="white" HorizontalAlignment="Left">
         <Grid x:Name="Top_Bar" Height="50" VerticalAlignment="Top" Background="#FF47255D" Grid.ColumnSpan="4">
             <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}" Text="Analysis de Riesgo" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" Foreground="White" />
-            <materialDesign:PopupBox HorizontalAlignment="Right" Margin="10,5,10,5" StaysOpen="False"  PlacementMode="BottomAndAlignRightEdges" Foreground="White">
+            <materialDesign:PopupBox HorizontalAlignment="Right" Margin="10,5,10,5" StaysOpen="False"  PlacementMode="BottomAndAlignRightEdges" Foreground="White" Content="">
                 <StackPanel Width="170">
                     <Button Click="New_Client" Foreground="#FF44355F" >
                         <StackPanel Orientation="Horizontal">
@@ -51,12 +51,20 @@
                             <TextBlock>Nuevo Calculo</TextBlock>
                         </StackPanel>
                     </Button>
-                    <Button Foreground="#FF44355F" >
+                    <Button Foreground="#FF44355F" Click="OpenWindowGraph">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="SettingsApplications" Margin="0 0 10 0 "/>
-                            <TextBlock>Ajustes</TextBlock>
+                            <materialDesign:PackIcon Kind="ChartAreaspline" Margin="0 0 10 0 "/>
+                            <TextBlock>Grafico</TextBlock>
                         </StackPanel>
                     </Button>
+                    <Button Foreground="#FF44355F" Click="SaveAnalysis">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="0 0 10 0 "/>
+                            <TextBlock>Guardar</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                   
                     <Button Foreground="#FF44355F" >
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="About" Margin="0 0 10 0 "/>
@@ -67,6 +75,12 @@
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Help" Margin="0 0 10 0 "/>
                             <TextBlock>ayuda</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Foreground="#FF44355F" >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="SettingsApplications" Margin="0 0 10 0 "/>
+                            <TextBlock>Ajustes</TextBlock>
                         </StackPanel>
                     </Button>
                     <Button Click="Salir" Foreground="#FF44355F" >

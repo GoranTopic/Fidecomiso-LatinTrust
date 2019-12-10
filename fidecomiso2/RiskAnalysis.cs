@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace fidecomiso2
 {
@@ -11,54 +12,93 @@ namespace fidecomiso2
         public string ClientName { get; set; }
         public bool IsJudicial { get; set; } // is a jusdicial or natual client
 
-        double RiskFactorTotal1;
-        double RiskFactorTotal2;
+        public double TotalRisk1 { get; set; }
+        public double TotalRisk2 { get; set; }
 
 
-        List<RiskField> RiskFactors1 = new List<RiskField>();
-        List<RiskField> RiskFactors2 = new List<RiskField>();
 
-
-        //risk variabel 1
-        public Dictionary<string, RiskField> ClienteRisks = new Dictionary<string, RiskField>(); 
-        public Dictionary<string, RiskField> GeoLOcation = new Dictionary<string, RiskField>(); 
-        public Dictionary<string, RiskField> ProductService = new Dictionary<string, RiskField>(); 
-        public Dictionary<string, RiskField> VinculationChanels = new Dictionary<string, RiskField>(); 
+        //risk factor 1
+        public List<RiskField> ClientRisks = new List<RiskField>();
+        public List<RiskField> GeoLocRisks = new List<RiskField>();
+        public List<RiskField> ProSerRisks = new List<RiskField>();
+        public List<RiskField> VinChaRisks = new List<RiskField>();
         
-        //risk variabel 2
-        public Dictionary<string, RiskField> TransactionalRisk = new Dictionary<string, RiskField>();
+        //risk Factor2
+        public List<RiskField> TransacationalRisks = new List<RiskField>();
 
         //chart page object 
         public RiskChart Chart_Page = new RiskChart();
 
-        public void update()
+
+        private double CalcSumRisk(List<RiskField> ListofRisk, double Weight)
         {
-            foreach (var risk in RiskFactors1)
+            // get the sum of all the values of the risk variable in the risk field and divides it by the Weight
+            double RiskSum = 0;
+            foreach (RiskField risk in ListofRisk)
             {
-                RiskFactorTotal1 += risk.Risk;
+                RiskSum += (double)risk.RiskVar;
             }
-            Chart_Page.RiskPoint.X = RiskFactorTotal1;
+            return RiskSum * Weight;
+        }
 
-            foreach (var risk in RiskFactors2)
+        public void UpdateRisks()
+        {
+
+            //Caculate First Risk Factor
+            //caculate the clietn risk with a weight of 45%
+            double ClientRisk = CalcSumRisk(ClientRisks, 0.45);
+            //caculate the Geo Location risk with a weight of 10%
+            double GeoLocRisk = CalcSumRisk(GeoLocRisks, 0.1);
+            //caculate the Product and Service risk with a weight of 35%
+            double ProSerRisk = CalcSumRisk(ProSerRisks, 0.35);
+            //caculate the Vinculation Channels risk with a weight of 10%
+            double VinChaRisk = CalcSumRisk(VinChaRisks, 0.1);
+
+
+            
+            /* DEBUGGING PORPUSES
+            Debug.WriteLine("client:{0}", ClientRisk );
+            foreach (RiskField risk in ClientRisks)
             {
-                RiskFactorTotal2 += risk.Risk;
+                Debug.WriteLine("   " + risk.Name);
+                Debug.WriteLine("   " + risk.RiskVar);
             }
 
-            Chart_Page.RiskPoint.X = RiskFactorTotal1;
+            Debug.WriteLine("Geo:{0},", GeoLocRisk );
+            foreach (RiskField risk in GeoLocRisks) {
+                Debug.WriteLine("   " + risk.Name);
+                Debug.WriteLine("   " + risk.RiskVar);
+            }
+
+            Debug.WriteLine("Proserv:{0},", ProSerRisk );
+            foreach (RiskField risk in ProSerRisks) {
+                Debug.WriteLine("   " + risk.Name);
+                Debug.WriteLine("   " + risk.RiskVar);
+            }
+
+            Debug.WriteLine("VincChal:{0},", VinChaRisk );
+            foreach (RiskField risk in VinChaRisks) {
+                Debug.WriteLine("   " + risk.Name);
+                Debug.WriteLine("   " + risk.RiskVar);
+            }
+            */
+
+
+            //final risk factor 1
+            TotalRisk1 = ClientRisk + GeoLocRisk + ProSerRisk + VinChaRisk;
+
+            //calcualte the second risk factor
+            //calculate the transactional risk with a weight of 100%
+            double TransRisk = CalcSumRisk(TransacationalRisks, 1);
+
+            //final risk factor 1
+            TotalRisk2 = TransRisk;
+
+            //update chart point 
+            Chart_Page.UpdatePoint(TotalRisk1, TotalRisk2);
         }
 
-        public void AddRiskFact1(RiskField field)
-        {
-            RiskFactors1.Add(field);
-            //chart update
-        }
-        public void AddRiskFact2(RiskField field)
-        {
-
-            RiskFactors2.Add(field);
-             //chart update 
-        }
-    }
+   }
 
 
    

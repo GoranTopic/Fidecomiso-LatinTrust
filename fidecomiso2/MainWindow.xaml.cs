@@ -12,6 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
+using LiveCharts;
+using LiveCharts.Wpf;
+using LiveCharts.Defaults;
+using System.IO;
 
 namespace fidecomiso2
 {
@@ -26,16 +31,18 @@ namespace fidecomiso2
         ProductoServicio PS_Page = new ProductoServicio();
         CanalVinculacion CV_Page = new CanalVinculacion();
         RiesgoTransacional RTrans_Page = new RiesgoTransacional();
+        Password pswd_page = new Password();
         RiskChart Chart_Page = (App.Current as App).Analysis.Chart_Page;
-
+        GraphWindow GrapWin;
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Content = Client_Page;
-        }   
+            MainFrame.Content = pswd_page;
+        }
 
         private void Salir(object sender, RoutedEventArgs e)
         {
+            if (Helpers.IsWindowOpen<GraphWindow>()) GrapWin.Close();
             Application.Current.Shutdown();
         }
 
@@ -86,7 +93,11 @@ namespace fidecomiso2
             else if (item.Name == "productoServicio") MainFrame.Content = PS_Page;
             else if (item.Name == "viculacion") MainFrame.Content = CV_Page;
             else if (item.Name == "transacional") MainFrame.Content = RTrans_Page;
-            else if (item.Name == "Chart") MainFrame.Content = Chart_Page;
+            else if (item.Name == "Chart")
+            {
+                if (Helpers.IsWindowOpen<GraphWindow>()) GrapWin.Close();
+                MainFrame.Content = Chart_Page;
+            }
         }
 
         private void StackPanel_MouseEnter(object sender, MouseEventArgs e)
@@ -104,5 +115,61 @@ namespace fidecomiso2
 
 
         }
+
+        private void OpenWindowGraph(object sender, RoutedEventArgs e)
+        {
+
+            if (Helpers.IsWindowOpen<GraphWindow>())
+            {
+                GrapWin.Close();
+            }
+            else
+            {
+                GrapWin = new GraphWindow();
+                GrapWin.GraphFrame.Content = Chart_Page;
+                GrapWin.Show();
+            }
+
+        }
+
+        private void SaveAnalysis(object sender, RoutedEventArgs e)
+        {
+            //BuildPngOnClick("charty");
+           // Stream file = File.Create("Chart");
+           // var result = Helpers.GetImage((App.Current as App).Analysis.Chart_Page.ChartsGrid);
+           
+            //Helpers.SaveAsPng(result, file);
+
+            RiskChart control = (App.Current as App).Analysis.Chart_Page;
+            double width = control.ActualWidth;
+            double height = control.ActualHeight;
+
+            control.Measure(new Size(width, height));
+            control.Arrange(new Rect(new Size(width, height)));
+
+            RenderTargetBitmap bmp = new RenderTargetBitmap((int)width, (int)height, 100, 100, PixelFormats.Pbgra32);
+
+            bmp.Render(control);
+
+            var encoder = new PngBitmapEncoder();
+
+            encoder.Frames.Add(BitmapFrame.Create(bmp));
+
+            using (Stream stm = File.Create("test.png"))
+                encoder.Save(stm);
+
+        }
+        
+    }
+    
+    public static class Helpers
+    {
+        public static bool IsWindowOpen<T>(string name = "") where T : Window
+        {
+            return string.IsNullOrEmpty(name)
+               ? Application.Current.Windows.OfType<T>().Any()
+               : Application.Current.Windows.OfType<T>().Any(w => w.Name.Equals(name));
+        }
+
     }
 }

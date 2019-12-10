@@ -43,9 +43,14 @@ namespace fidecomiso2
         {
 
             if (pswdBox.Password.ToString() == "latintrust2020")
+            {
+                fidecomiso2.MainWindow mw = (fidecomiso2.MainWindow)App.Current.MainWindow;
+                mw.vars.IsLogin = true;
                 this.NavigationService.Navigate(new Uri("Cliente.xaml", UriKind.Relative));
+            }
             else
                 statusText.Content = "Wrong Password";
         }
            }
+   
 }

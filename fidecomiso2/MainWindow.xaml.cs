@@ -17,6 +17,7 @@ using LiveCharts;
 using LiveCharts.Wpf;
 using LiveCharts.Defaults;
 using System.IO;
+using System.ComponentModel;
 
 namespace fidecomiso2
 {
@@ -25,6 +26,9 @@ namespace fidecomiso2
     /// </summary>
     public partial class MainWindow : Window
     {
+        public WinVars vars = new WinVars();
+
+        public WinVars Xamlvars { get { return vars; } }
 
         Cliente Client_Page = new Cliente();
         UbicacionGeografica UG_Page = new UbicacionGeografica();
@@ -34,9 +38,12 @@ namespace fidecomiso2
         Password pswd_page = new Password();
         RiskChart Chart_Page = (App.Current as App).Analysis.Chart_Page;
         GraphWindow GrapWin;
+        
         public MainWindow()
         {
+            
             InitializeComponent();
+            this.DataContext = this;
             MainFrame.Content = pswd_page;
         }
 
@@ -161,7 +168,9 @@ namespace fidecomiso2
         }
         
     }
+
     
+
     public static class Helpers
     {
         public static bool IsWindowOpen<T>(string name = "") where T : Window
@@ -171,5 +180,25 @@ namespace fidecomiso2
                : Application.Current.Windows.OfType<T>().Any(w => w.Name.Equals(name));
         }
 
+    }
+    public class WinVars : INotifyPropertyChanged
+    {
+        private bool _IsLogin = false;
+        public bool IsLogin
+        {
+            get { return _IsLogin; }
+            set
+            {
+                _IsLogin = value;
+                OnPropertyChanged("IsLogin");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            if (this.PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

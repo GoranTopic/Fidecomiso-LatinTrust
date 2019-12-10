@@ -45,39 +45,39 @@
             <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}" Text="Analysis de Riesgo" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" Foreground="White" />
             <materialDesign:PopupBox HorizontalAlignment="Right" Margin="10,5,10,5" StaysOpen="False"  PlacementMode="BottomAndAlignRightEdges" Foreground="White" Content="">
                 <StackPanel Width="170">
-                    <Button Click="New_Client" Foreground="#FF44355F" >
+                    <Button  IsEnabled="{Binding Path=Xamlvars.IsLogin}"  Click="New_Client" Foreground="#FF44355F" >
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Restart" Margin="0 0 10 0 "/>
                             <TextBlock>Nuevo Calculo</TextBlock>
                         </StackPanel>
                     </Button>
-                    <Button Foreground="#FF44355F" Click="OpenWindowGraph">
+                    <Button  IsEnabled="{Binding Path=Xamlvars.IsLogin}"  Foreground="#FF44355F" Click="OpenWindowGraph">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="ChartAreaspline" Margin="0 0 10 0 "/>
                             <TextBlock>Grafico</TextBlock>
                         </StackPanel>
                     </Button>
-                    <Button Foreground="#FF44355F" Click="SaveAnalysis">
+                    <Button  IsEnabled="{Binding Path=Xamlvars.IsLogin}"  Foreground="#FF44355F" Click="SaveAnalysis">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="ContentSave" Margin="0 0 10 0 "/>
                             <TextBlock>Guardar</TextBlock>
                         </StackPanel>
                     </Button>
 
-                   
-                    <Button Foreground="#FF44355F" >
+
+                    <Button  IsEnabled="{Binding Path=Xamlvars.IsLogin}"  Foreground="#FF44355F" >
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="About" Margin="0 0 10 0 "/>
                             <TextBlock>Informacion</TextBlock>
                         </StackPanel>
                     </Button>
-                    <Button Foreground="#FF44355F" >
+                    <Button  IsEnabled="{Binding Path=Xamlvars.IsLogin}"  Foreground="#FF44355F" >
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Help" Margin="0 0 10 0 "/>
                             <TextBlock>ayuda</TextBlock>
                         </StackPanel>
                     </Button>
-                    <Button Foreground="#FF44355F" >
+                    <Button  IsEnabled="{Binding Path=Xamlvars.IsLogin}"  Foreground="#FF44355F" >
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="SettingsApplications" Margin="0 0 10 0 "/>
                             <TextBlock>Ajustes</TextBlock>
@@ -110,28 +110,28 @@
                 <Grid Margin="10 10 10 0 " Height="1" Width="200" Background="white"/>
 
                 <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="205" >
-                    <ListViewItem x:Name="cliente" PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown">
+                    <ListViewItem IsEnabled="{Binding Path=Xamlvars.IsLogin}" x:Name="cliente" PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="AccountLocation" Foreground="White" Margin="5 10 0 0" Height="25" Width="25"/>
                             <TextBlock Text="PEP" Foreground="white" Margin="10 15 0 0" FontSize="14"/>
                         </StackPanel>
                     </ListViewItem>
 
-                    <ListViewItem x:Name="ubicacion" Height="50" PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown">
+                    <ListViewItem  IsEnabled="{Binding Path=Xamlvars.IsLogin}" x:Name="ubicacion" Height="50" PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="MyLocation" Foreground="White" Margin="5 10 0 0" Height="25" Width="25"/>
                             <TextBlock Text="Ubicacion Geografica" Foreground="white" Margin="10 15 0 0" FontSize="14"/>
                         </StackPanel>
                     </ListViewItem>
 
-                    <ListViewItem x:Name="productoServicio" Height="50" PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown">
+                    <ListViewItem IsEnabled="{Binding Path=Xamlvars.IsLogin}"  x:Name="productoServicio" Height="50" PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="ServiceToolbox" Foreground="White" Margin="5 10 0 0" Height="25" Width="25"/>
                             <TextBlock Text="Producto o servicio" Foreground="white" Margin="10 15 0 0" FontSize="14"/>
                         </StackPanel>
                     </ListViewItem>
 
-                    <ListViewItem x:Name="viculacion" Height="50" PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown">
+                    <ListViewItem IsEnabled="{Binding Path=Xamlvars.IsLogin}"  x:Name="viculacion" Height="50" PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="OfficeBuilding" Foreground="White" Margin="5 10 0 0" Height="25" Width="25"/>
                             <TextBlock Text="Canal de Vinculacion" Foreground="white" Margin="10 15 0 0" FontSize="14"/>
@@ -143,7 +143,7 @@
                 <Grid Margin="10 10 10 0" Height="1" Width="200" Background="white"/>
 
                 <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="65" >
-                    <ListViewItem x:Name="transacional"  PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown" VerticalAlignment="Top">
+                    <ListViewItem IsEnabled="{Binding Path=Xamlvars.IsLogin}"  x:Name="transacional"  PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown" VerticalAlignment="Top">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
                             <materialDesign:PackIcon Kind="BankTransfer" Foreground="white" Margin="5 15 5 0" HorizontalAlignment="Left" Height="28" Width="26" />
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
@@ -157,7 +157,7 @@
                 <Grid Margin="10 10 10 0" Height="1" Width="200" Background="white"/>
                 
                 <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="45" >
-                    <ListViewItem x:Name="Chart"  PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown" VerticalAlignment="Top">
+                    <ListViewItem  IsEnabled="{Binding Path=Xamlvars.IsLogin}" x:Name="Chart"  PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseLeftButtonDown" VerticalAlignment="Top">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
                             <materialDesign:PackIcon Kind="ChartAreaspline" Foreground="white" Margin="5 5 5 0" HorizontalAlignment="Left" Height="25" Width="25" />
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">

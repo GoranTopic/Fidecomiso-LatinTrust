@@ -41,6 +41,7 @@ namespace fidecomiso2
         public RiskChart()
         {
 
+
             var r = new Random();
             ObservablePoint RiskPoint = new ObservablePoint(2, 2);
 

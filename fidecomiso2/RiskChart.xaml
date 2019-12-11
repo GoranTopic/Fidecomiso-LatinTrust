@@ -46,7 +46,7 @@
             </lvc:CartesianChart>
 
             <lvc:CartesianChart  x:Name="ScatterChart" LegendLocation="Top" Margin ="26,10,15,26">
-                <lvc:CartesianChart.Series>
+                <lvc:CartesianChart.Series >
                     <lvc:ScatterSeries Title="Riesgo Final" Values="{Binding ScatterValues}"
                     PointGeometry="{x:Static lvc:DefaultGeometries.Diamond}"
                     StrokeThickness="2" Stroke="#FF47255D" Fill="Transparent" Height="120"  />

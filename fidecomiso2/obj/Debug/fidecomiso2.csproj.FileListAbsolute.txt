@@ -73,3 +73,5 @@ C:\Users\gusta\Source\Repos\Fidecomiso\fidecomiso2\obj\Debug\GraphWindow.g.cs
 C:\Users\gusta\Source\Repos\Fidecomiso\fidecomiso2\obj\Debug\GraphWindow.baml
 C:\Users\gusta\Source\Repos\Fidecomiso\fidecomiso2\obj\Debug\Password.g.cs
 C:\Users\gusta\Source\Repos\Fidecomiso\fidecomiso2\obj\Debug\Password.baml
+C:\Users\gusta\Source\Repos\Fidecomiso\fidecomiso2\obj\Debug\Infomacion.g.cs
+C:\Users\gusta\Source\Repos\Fidecomiso\fidecomiso2\obj\Debug\Infomacion.baml

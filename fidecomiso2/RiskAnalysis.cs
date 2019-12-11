@@ -7,8 +7,23 @@ using System.Diagnostics;
 
 namespace fidecomiso2
 {
+
+
+
+
+
+
+
     public class RiskAnalysis 
     {
+
+
+        private double ClientRisk;
+        private double GeoLocRisk;
+        private double ProSerRisk;
+        private double VinChaRisk;
+        private double TransRisk;
+
         public string ClientName { get; set; }
         public bool IsJudicial { get; set; } // is a jusdicial or natual client
 
@@ -42,31 +57,58 @@ namespace fidecomiso2
         }
 
 
-        private void print_Risks(List<RiskField> ListofRisks, double Weight)
+        private string ToString_Risks(List<RiskField> ListofRisks, double Weight)
         {
+            string Str = "";
             double sum = 0;
             foreach (RiskField risk in ListofRisks)
             {
-                Debug.WriteLine("   " + risk.Name);
-                Debug.WriteLine("   " + risk.RiskVar);
+                Str +=  String.Format("   {0,-26}- {1}\n", risk.Name+":", risk.RiskVar);
                 sum += (double)risk.RiskVar;
             }
-            Debug.WriteLine("   Raw Sum: {0} * {1} = {2}", sum, Weight, sum * Weight);
-
+            Str += String.Format("   {0,-26}- {1} ({2}%) = {3}\n\n", "suma:",  sum, (int)(Weight * 100) , sum * Weight) ;
+            return Str;
         }
 
+        public override string ToString()
+        {
+            string des = "";
+
+            des += "---------------\n";
+            /* for printing PORPUSES */
+            des += "Client Risks:\n";
+            des += ToString_Risks(ClientRisks, 0.45);
+
+            des += "Geoloacation:\n";
+            des += ToString_Risks(GeoLocRisks, 0.1);
+
+            des += "Product and service:\n";
+            des += ToString_Risks(ProSerRisks, 0.35);
+
+            des += "Vinculation Channels:\n";
+            des += ToString_Risks(VinChaRisks, 0.1);
+
+            //calcualte the second risk factor
+            //calculate the transactional risk with a weight of 100%
+
+            des += "Trans Risk:\n";
+            des += ToString_Risks(TransacationalRisks, 1);
+
+            //Debug.WriteLine("X: {0}, y: {1}", TotalRisk1, TotalRisk2);
+            return des;
+        }
         public void UpdateRisks()
         {
 
             //Caculate First Risk Factor
             //caculate the clietn risk with a weight of 45%
-            double ClientRisk = CalcSumRisk(ClientRisks, 0.45);
+            ClientRisk = CalcSumRisk(ClientRisks, 0.45);
             //caculate the Geo Location risk with a weight of 10%
-            double GeoLocRisk = CalcSumRisk(GeoLocRisks, 0.1);
+            GeoLocRisk = CalcSumRisk(GeoLocRisks, 0.1);
             //caculate the Product and Service risk with a weight of 35%
-            double ProSerRisk = CalcSumRisk(ProSerRisks, 0.35);
+            ProSerRisk = CalcSumRisk(ProSerRisks, 0.35);
             //caculate the Vinculation Channels risk with a weight of 10%
-            double VinChaRisk = CalcSumRisk(VinChaRisks, 0.1);
+            VinChaRisk = CalcSumRisk(VinChaRisks, 0.1);
 
 
 
@@ -76,27 +118,27 @@ namespace fidecomiso2
             Debug.WriteLine("-------------");
             /* DEBUGGING PORPUSES */
             Debug.WriteLine("Client Risks:");
-            print_Risks(ClientRisks, 0.45);
+            ToString_Risks(ClientRisks, 0.45);
 
 
             Debug.WriteLine("Geoloacation");
-            print_Risks(GeoLocRisks, 0.1);
+            ToString_Risks(GeoLocRisks, 0.1);
 
             Debug.WriteLine("Product and service");
-            print_Risks(ProSerRisks, 0.35);
+            ToString_Risks(ProSerRisks, 0.35);
 
             Debug.WriteLine("Vinculation Channels");
-            print_Risks(VinChaRisks, 0.1);
+            ToString_Risks(VinChaRisks, 0.1);
 
             //final risk factor 1
             TotalRisk1 = ClientRisk + GeoLocRisk + ProSerRisk + VinChaRisk;
 
             //calcualte the second risk factor
             //calculate the transactional risk with a weight of 100%
-            double TransRisk = CalcSumRisk(TransacationalRisks, 1);
+            TransRisk = CalcSumRisk(TransacationalRisks, 1);
 
             Debug.WriteLine("Trans Risk: ");
-            print_Risks(TransacationalRisks, 1);
+            ToString_Risks(TransacationalRisks, 1);
             //final risk factor 1
             TotalRisk2 = TransRisk;
 

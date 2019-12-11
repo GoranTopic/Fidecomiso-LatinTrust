@@ -142,37 +142,63 @@ namespace fidecomiso2
         private void SaveAnalysis(object sender, RoutedEventArgs e)
         {
 
+            
+
             if (Helpers.IsWindowOpen<GraphWindow>())
             {
                 GrapWin.Close();
-                Debug.WriteLine("window graph open, continue");
+                Debug.WriteLine("------ window graph open, continue --------");
             }
             else if (MainFrame.Content == Chart_Page)
             {
-                Debug.WriteLine("chart opend, continue");
+                Debug.WriteLine("------- chart opend, continue ------------");
             }
             else return;
-            
-           
-            RiskChart control = (App.Current as App).Analysis.Chart_Page;
-            control.InitializeComponent();
-            double width = control.ActualWidth;
-            double height = control.ActualHeight;
 
-            control.Measure(new Size(width, height));
-            control.Arrange(new Rect(new Size(width, height)));
+            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+            dlg.FileName = "Document"; // Default file name
+            dlg.DefaultExt = ".text"; // Default file extension
+            dlg.Filter = "Text documents (.txt)|*.txt"; // Filter files by extension
 
-            RenderTargetBitmap bmp = new RenderTargetBitmap((int)width, (int)height, 100, 100, PixelFormats.Pbgra32);
+            // Show save file dialog box
+            Nullable<bool> result = dlg.ShowDialog();
 
-            bmp.Render(control);
+            // Process save file dialog box results
+            if (result == true)
+            {
+                // Save document
+                string[] filename = dlg.FileName.Split('.');
 
-            var encoder = new PngBitmapEncoder();
+                string text = "A class is the most powerful data type in C#. Like a structure, " +
+                       "a class defines the data and behavior of the data type. ";
+                System.IO.File.WriteAllText(filename[0]+".txt", text);
 
-            encoder.Frames.Add(BitmapFrame.Create(bmp));
+                using (System.IO.StreamWriter file =
+                new System.IO.StreamWriter(filename[0]+".txt", true))
+                {
+                    file.WriteLine((App.Current as App).Analysis);
+                }
 
-            using (Stream stm = File.Create("test.png"))
-                encoder.Save(stm);
+                RiskChart control = (App.Current as App).Analysis.Chart_Page;
+                control.InitializeComponent();
+                double width = control.ActualWidth;
+                double height = control.ActualHeight;
 
+                control.Measure(new Size(width, height));
+                control.Arrange(new Rect(new Size(width, height)));
+
+                RenderTargetBitmap bmp = new RenderTargetBitmap((int)width, (int)height, 100, 100, PixelFormats.Pbgra32);
+
+                bmp.Render(control);
+
+                var encoder = new PngBitmapEncoder();
+
+                encoder.Frames.Add(BitmapFrame.Create(bmp));
+
+                using (Stream stm = File.Create(filename[0]+".png"))
+                    encoder.Save(stm);
+
+            }
         }
         
     }

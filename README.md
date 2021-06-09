@@ -7,3 +7,6 @@ It was created as a solution for the tedious manul work work which the accountan
 The GUI promps the user question about the client. 
 
 Then it calculates the risk and graphs it to match. Saving the informations in a django back-end server. 
+
+## Todo 
+  * [ ]  Add Screen shots of the program to the README.md file

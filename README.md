@@ -10,3 +10,8 @@ Then it calculates the risk and graphs it to match. Saving the informations in a
 
 ## Todo 
   * [ ]  Add Screen shots of the program to the README.md file
+
+
+
+As Always yours, 
+Goran Topic  :shipit:
